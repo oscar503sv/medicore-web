@@ -75,7 +75,7 @@ export const compareRows: { key: string; cells: CompareCell[] }[] = [
   { key: 'icd', cells: same(t('yes')) },
   { key: 'roles', cells: same(t('yes')) },
   { key: 'dashboard', cells: [t('basic'), t('clinic'), t('operational'), t('operational')] },
-  { key: 'reports', cells: [t('no'), t('no'), t('soon'), t('soon')] },
+  { key: 'reports', cells: [t('no'), t('no'), t('yes'), t('yes')] },
   { key: 'storage', cells: same({ kind: 'storage' }) },
   { key: 'priority', cells: [t('no'), t('no'), t('yes'), t('yes')] },
 ];
