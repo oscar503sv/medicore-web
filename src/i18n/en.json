@@ -242,10 +242,6 @@
       {
         "q": "What happens to my records if I change plans?",
         "a": "They stay put. Changing plans doesn’t delete or lock your patients’ information."
-      },
-      {
-        "q": "Is it available in Spanish?",
-        "a": "Yes. Each person can use Medicore in Spanish or English."
       }
     ],
     "sub": "What doctors and clinics ask us most before getting started.",
@@ -254,7 +250,7 @@
   },
   "demo": {
     "title": "See Medicore in action",
-    "sub": "Leave your details and we’ll reach out to schedule a free 30-minute demo or help you pick a plan.",
+    "sub": "Request your free demo. Leave your details and we’ll reach out to schedule it or help you pick a plan.",
     "name": "Your name",
     "clinic": "Clinic or practice",
     "optional": "(optional)",

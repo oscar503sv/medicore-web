@@ -242,10 +242,6 @@
       {
         "q": "¿Qué pasa con mis expedientes si cambio de plan?",
         "a": "Siguen ahí. Cambiar de plan no borra ni bloquea la información de tus pacientes."
-      },
-      {
-        "q": "¿Está en inglés?",
-        "a": "Sí. Cada persona puede usar Medicore en español o en inglés."
       }
     ],
     "sub": "Lo que más nos preguntan los médicos y las clínicas antes de empezar.",
@@ -254,7 +250,7 @@
   },
   "demo": {
     "title": "Mira Medicore en acción",
-    "sub": "Déjanos tus datos y te contactamos para agendar una demo gratis de 30 minutos o ayudarte a elegir tu plan.",
+    "sub": "Solicita tu demo gratis. Déjanos tus datos y te contactamos para agendarla o ayudarte a elegir tu plan.",
     "name": "Tu nombre",
     "clinic": "Clínica o consultorio",
     "optional": "(opcional)",
