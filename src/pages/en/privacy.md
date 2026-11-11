@@ -4,7 +4,7 @@ lang: en
 route: privacy
 title: Privacy policy
 description: How Medicore collects, uses and protects the personal data of people who visit medicoresv.health and request a demo.
-updated: 2026-11-10
+updated: 2026-11-11
 ---
 
 ## 1. Who we are
@@ -58,7 +58,7 @@ Only with providers that help us run the site, under agreements that require the
 | --- | --- | --- |
 | Vercel Inc. | Hosting of the site and the form | United States |
 | Resend (Plus Five Five, Inc.) | Delivering the email with your request | United States |
-| Cloudflare, Inc. (if enabled) | Anti-spam verification (Turnstile) | United States |
+| Cloudflare, Inc. | Anti-spam verification | United States |
 
 We may also share data if a competent authority requires it under the law.
 
@@ -92,7 +92,7 @@ A cookie is a small file a site stores in your browser.
 
 We currently **do not use** analytics, advertising or third-party cookies. The site only uses what is strictly necessary to work.
 
-If we enable Cloudflare Turnstile anti-spam verification, Cloudflare may use strictly necessary technical data to tell people from bots.
+Cloudflare provides anti-spam verification on the form and may use strictly necessary technical data to tell people from bots.
 
 If we add non-essential cookies in the future, we will ask for your permission before turning them on and update this policy.
 
