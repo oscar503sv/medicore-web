@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import Message from '../components/Message.astro';
+import { routes, useTranslations } from '../i18n/utils';
+const lang = 'es';
+const t = useTranslations(lang);
+---
+
+<Base lang={lang} route="thanks" title={`${t.thanks.title} — Medicore`} noindex minimalNav>
+  <Message title={t.thanks.title} body={t.thanks.body} href={routes.home[lang]} cta={t.thanks.back} icon="✓" tone="ok" />
+</Base>

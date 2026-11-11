@@ -1,0 +1,63 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const t = useTranslations(Astro.props.lang);
+---
+
+<section class="section container" aria-labelledby="steps-title">
+  <h2 id="steps-title" class="h2 wide">{t.steps.title}</h2>
+  <ol>
+    {
+      t.steps.items.map((s) => (
+        <li>
+          <span class="n">{s.n}</span>
+          <h3>{s.title}</h3>
+          <p>{s.body}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .wide {
+    max-width: 18ch;
+  }
+  ol {
+    list-style: none;
+    padding: 0;
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 16px;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 28px;
+    border-top: 2px solid var(--ink);
+  }
+  .n {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--primary);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-80);
+    max-width: 34ch;
+  }
+</style>

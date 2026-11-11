@@ -1,0 +1,259 @@
+---
+import Logo from './Logo.astro';
+import { languages, routes, useTranslations, type Lang, type RouteKey } from '../i18n/utils';
+import { APP_URL } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  minimal?: boolean;
+}
+
+const { lang, route, minimal = false } = Astro.props;
+const t = useTranslations(lang);
+const home = routes.home[lang];
+const onHome = route === 'home';
+const anchor = (id: string) => (onHome ? `#${id}` : `${home}#${id}`);
+
+const links = [
+  { href: anchor('funciones'), label: t.nav.features },
+  { href: anchor('equipo'), label: t.nav.who },
+  { href: anchor('precios'), label: t.nav.pricing },
+  { href: anchor('preguntas'), label: t.nav.faq },
+];
+const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
+  code,
+  href: routes[route][code],
+  label: languages[code],
+  current: code === lang,
+}));
+---
+
+<header class="site-header">
+  <nav class="nav" aria-label="Medicore">
+    <Logo href={home} label={t.ui.home} />
+
+    <div class="nav-desktop">
+      {!minimal && links.map((l) => <a class="nav-link" href={l.href}>{l.label}</a>)}
+      <div class="lang" role="group" aria-label={t.ui.lang}>
+        {
+          langLinks.map((l) => (
+            <a
+              href={l.href}
+              hreflang={l.code}
+              lang={l.code}
+              aria-current={l.current ? 'page' : undefined}
+              title={l.label}
+            >
+              {l.code.toUpperCase()}
+            </a>
+          ))
+        }
+      </div>
+      <a class="nav-link login" href={APP_URL}>{t.nav.login}</a>
+    </div>
+
+    <a class="btn btn-dark nav-cta" href={anchor('demo')}>{t.nav.cta}</a>
+
+    <details class="menu" data-menu>
+      <summary aria-label={t.ui.menu}>
+        <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </summary>
+      <div class="menu-panel">
+        {!minimal && links.map((l) => <a class="menu-link" href={l.href}>{l.label}</a>)}
+        <a class="menu-link" href={APP_URL}>{t.nav.login}</a>
+        <div class="menu-foot">
+          <div class="lang" role="group" aria-label={t.ui.lang}>
+            {
+              langLinks.map((l) => (
+                <a href={l.href} hreflang={l.code} lang={l.code} aria-current={l.current ? 'page' : undefined}>
+                  {l.code.toUpperCase()}
+                </a>
+              ))
+            }
+          </div>
+          <a class="btn btn-dark menu-cta" href={anchor('demo')}>{t.nav.cta}</a>
+        </div>
+      </div>
+    </details>
+  </nav>
+</header>
+
+<script>
+  // Close the mobile menu after choosing a link, on Escape, or on outside click.
+  const menu = document.querySelector<HTMLDetailsElement>('[data-menu]');
+  if (menu) {
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) menu.open = false;
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (menu.open && !menu.contains(e.target as Node)) menu.open = false;
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 14px var(--gutter);
+  }
+  .nav {
+    position: relative;
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px 24px;
+    padding: 10px 10px 10px 20px;
+    background: rgba(255, 255, 255, 0.78);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border-08);
+    border-radius: 999px;
+  }
+  .nav > :global(.logo) {
+    margin-right: auto;
+  }
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 8px 24px;
+  }
+  .nav-link {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .nav-link:hover {
+    color: var(--primary);
+  }
+  .login {
+    padding: 0 4px;
+  }
+  .lang {
+    display: flex;
+    padding: 3px;
+    background: var(--ink-05);
+    border-radius: 999px;
+  }
+  .lang a {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--ink);
+  }
+  .lang a[aria-current='page'] {
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(38, 33, 48, 0.15);
+  }
+  .lang a:not([aria-current]):hover {
+    color: var(--primary);
+  }
+  .nav-cta {
+    font-size: 15px;
+    padding: 12px 20px;
+    white-space: nowrap;
+  }
+
+  /* Mobile menu */
+  .menu {
+    display: none;
+  }
+  .menu summary {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: var(--ink-05);
+  }
+  .burger {
+    display: grid;
+    gap: 4px;
+    width: 18px;
+  }
+  .burger span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform var(--ease), opacity var(--ease);
+  }
+  .menu[open] .burger span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .menu[open] .burger span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu[open] .burger span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  .menu-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid var(--border-08);
+    border-radius: 28px;
+    box-shadow: 0 18px 40px -16px rgba(38, 33, 48, 0.35);
+  }
+  .menu-link {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 17px;
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+  .menu-link:hover {
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .menu-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 6px 4px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border-08);
+  }
+  .menu-cta {
+    font-size: 15px;
+    padding: 12px 20px;
+  }
+
+  @media (max-width: 1059px) {
+    .nav {
+      gap: 10px;
+      padding: 8px 8px 8px 16px;
+    }
+    .nav-desktop {
+      display: none;
+    }
+    .menu {
+      display: block;
+    }
+  }
+  @media (max-width: 400px) {
+    .nav-cta {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+import { routes, useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="cookie" role="region" aria-labelledby="cookie-title" data-cookie-banner hidden>
+  <p id="cookie-title" class="title">{t.cookies.title}</p>
+  <p class="body">
+    {t.cookies.body}
+    <a href={`${routes.privacy[lang]}#cookies`}>{t.cookies.more}</a>
+  </p>
+  <div class="actions">
+    <button type="button" class="btn btn-light" data-consent="essential">{t.cookies.essential}</button>
+    <button type="button" class="btn btn-dark" data-consent="all">{t.cookies.all}</button>
+  </div>
+</div>
+
+<script>
+  import { getConsent, setConsent, initConsentLoaders, type ConsentLevel } from '../scripts/consent';
+
+  const banner = document.querySelector<HTMLElement>('[data-cookie-banner]');
+  if (banner) {
+    const show = () => {
+      banner.hidden = false;
+      banner.querySelector<HTMLButtonElement>('[data-consent="essential"]')?.focus({ preventScroll: true });
+    };
+    if (!getConsent()) banner.hidden = false;
+
+    banner.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setConsent(btn.dataset.consent as ConsentLevel);
+        banner.hidden = true;
+      });
+    });
+    document.querySelectorAll('[data-cookie-settings]').forEach((el) => el.addEventListener('click', show));
+  }
+  initConsentLoaders();
+</script>
+
+<style>
+  .cookie {
+    position: fixed;
+    z-index: 50;
+    left: var(--gutter);
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: min(440px, calc(100vw - 2 * var(--gutter)));
+    background: #fff;
+    border: 1px solid var(--border-08);
+    border-radius: 28px;
+    padding: 22px 24px;
+    box-shadow: 0 18px 40px -16px rgba(38, 33, 48, 0.35);
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  .body {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-top: 6px;
+    color: var(--ink-80);
+  }
+  .body a {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .actions .btn {
+    flex: 1 1 140px;
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+</style>

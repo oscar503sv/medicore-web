@@ -1,0 +1,522 @@
+{
+  "nav": {
+    "features": "Funciones",
+    "who": "Tu equipo",
+    "faq": "Preguntas",
+    "login": "Entrar",
+    "cta": "Pedir una demo",
+    "pricing": "Precios"
+  },
+  "hero": {
+    "pill": "Para consultorios y clínicas en El Salvador",
+    "l1": "Menos papeleo.",
+    "l2": "Más tiempo para tus pacientes.",
+    "sub": "Medicore reúne tu agenda, los expedientes, las consultas y las recetas en un solo lugar. Sin instalar nada: entras desde el navegador y listo.",
+    "cta": "Pedir una demo gratis",
+    "cta2": "Ver cómo funciona",
+    "fine": "Te ayudamos a configurarlo. Sin compromiso.",
+    "slot": "Arrastra aquí una captura de Medicore",
+    "c1a": "Ana Martínez",
+    "c1b": "Control general",
+    "c2a": "Citas de hoy",
+    "c2b": "+3 vs. la semana pasada"
+  },
+  "who": {
+    "stripLabel": "Para cualquier especialidad",
+    "strip": [
+      "Medicina general",
+      "Pediatría",
+      "Ginecología",
+      "Medicina interna",
+      "Dermatología",
+      "Cardiología",
+      "Medicina familiar",
+      "Ortopedia"
+    ],
+    "stripMore": "y muchas más",
+    "title": "Pensado para todo tu equipo",
+    "items": [
+      {
+        "kicker": "Médicos",
+        "title": "Atiende con todo a mano",
+        "points": [
+          "Tu agenda y tus pacientes desde cualquier computadora",
+          "El historial completo en cada consulta",
+          "Recetas y diagnósticos CIE en segundos"
+        ],
+        "tone": "white"
+      },
+      {
+        "kicker": "Recepción",
+        "title": "Agenda sin choques de horario",
+        "points": [
+          "Las citas de todos los médicos desde un solo lugar",
+          "El horario de cada médico siempre a la vista",
+          "Avisos cuando una cita cambia"
+        ],
+        "tone": "mint"
+      },
+      {
+        "kicker": "Enfermería y administración",
+        "title": "Todo el equipo en orden",
+        "points": [
+          "Acceso solo a lo que le corresponde a cada rol",
+          "Un resumen del día para administración",
+          "Comparten el cupo de usuarios de apoyo de tu plan"
+        ],
+        "tone": "ink"
+      }
+    ],
+    "sub": "Cada persona entra con su propio usuario y ve solo lo que su rol le permite."
+  },
+  "feat": {
+    "title": "Todo lo que tu clínica necesita",
+    "sub": "Las herramientas del día a día, pensadas para que cualquier persona de tu equipo las aprenda en minutos.",
+    "agenda": {
+      "title": "Tu agenda, sin choques de horario",
+      "body": "Agenda según el horario de cada médico. Si alguien cancela o reprograma, te avisamos al instante.",
+      "rows": [
+        {
+          "time": "08:00",
+          "name": "Carlos Hernández",
+          "tag": "Confirmada",
+          "tone": "mint"
+        },
+        {
+          "time": "09:30",
+          "name": "Sofía Rivas",
+          "tag": "Primera vez",
+          "tone": "coral"
+        },
+        {
+          "time": "10:30",
+          "name": "Ana Martínez",
+          "tag": "Control",
+          "tone": "cream"
+        }
+      ]
+    },
+    "record": {
+      "title": "Un expediente por paciente",
+      "body": "Consultas, diagnósticos, recetas y alergias, todo en la misma ficha y siempre a mano.",
+      "mock": {
+        "initials": "AM",
+        "name": "Ana Martínez",
+        "meta": "34 años · Exp. 0142",
+        "allergy": "Alergia: penicilina",
+        "stats": [
+          {
+            "n": "12",
+            "label": "Consultas"
+          },
+          {
+            "n": "8",
+            "label": "Recetas"
+          },
+          {
+            "n": "5",
+            "label": "Diagnósticos"
+          }
+        ]
+      }
+    },
+    "consult": {
+      "title": "Consultas más rápidas",
+      "body": "Escribe y Medicore te sugiere el diagnóstico. Las recetas quedan guardadas en el expediente.",
+      "typing": "Faringitis…",
+      "suggest": "J02.9 Faringitis aguda"
+    },
+    "vax": {
+      "title": "Vacunas siempre al día",
+      "body": "Sigue el esquema nacional de vacunación. Sabes qué dosis le toca a cada paciente y cuáles están atrasadas.",
+      "doses": [
+        {
+          "name": "Hepatitis B",
+          "status": "Aplicada",
+          "tone": "done"
+        },
+        {
+          "name": "Pentavalente 2",
+          "status": "Toca hoy",
+          "tone": "due"
+        },
+        {
+          "name": "Neumococo",
+          "status": "Atrasada",
+          "tone": "late"
+        }
+      ]
+    },
+    "small": [
+      {
+        "title": "Enfermería organizada",
+        "body": "Inyecciones, sueros y nebulizaciones con su registro y un aviso si el paciente es alérgico.",
+        "tone": "coral"
+      },
+      {
+        "title": "Procedimientos menores",
+        "body": "Suturas, curaciones o biopsias con su consentimiento y su nota, de principio a fin.",
+        "tone": "mint"
+      },
+      {
+        "title": "El día de un vistazo",
+        "body": "Cuántas citas tienes hoy, cuántas faltan y cómo vas comparado con la semana pasada.",
+        "tone": "ink"
+      }
+    ]
+  },
+  "steps": {
+    "title": "Empezar es más fácil de lo que crees",
+    "items": [
+      {
+        "n": "Paso 1",
+        "title": "Pide tu demo",
+        "body": "Te mostramos Medicore en una videollamada corta y resolvemos tus dudas."
+      },
+      {
+        "n": "Paso 2",
+        "title": "Configuramos tu clínica",
+        "body": "Te ayudamos a elegir tu plan y dejamos listos contigo tus médicos, horarios y equipo."
+      },
+      {
+        "n": "Paso 3",
+        "title": "Empieza a atender",
+        "body": "Tu equipo entra desde el navegador. Sin instalaciones ni servidores."
+      }
+    ]
+  },
+  "sec": {
+    "pill": "Tu información, protegida",
+    "title": "Los datos de tus pacientes están en buenas manos",
+    "sub": "Sabemos lo delicada que es la información médica. Por eso Medicore cuida cada acceso.",
+    "items": [
+      {
+        "title": "Solo tu clínica",
+        "body": "Nadie fuera de tu equipo puede ver la información de tus pacientes."
+      },
+      {
+        "title": "Cada quien, lo suyo",
+        "body": "Tú decides qué puede ver y hacer cada persona: médicos, enfermería o recepción."
+      },
+      {
+        "title": "Todo queda registrado",
+        "body": "Sabes quién abrió un expediente y cuándo."
+      },
+      {
+        "title": "Nada se pierde",
+        "body": "Una consulta firmada no se puede borrar. Si hay un error, se corrige y queda el historial."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "q": "¿Tengo que instalar algo?",
+        "a": "No. Medicore funciona en línea: solo necesitas internet y un navegador en tu computadora."
+      },
+      {
+        "q": "¿Necesito saber de tecnología?",
+        "a": "Para nada. Está pensado para que cualquier persona de tu equipo lo use desde el primer día, y te acompañamos en la configuración."
+      },
+      {
+        "q": "¿Qué plan me conviene?",
+        "a": "Si trabajas solo, el plan Profesional independiente. Si son varios médicos, Clínica o Clínica Plus según cuántos sean. Para centros más grandes o con varias sedes, Empresarial. En la demo te ayudamos a elegir."
+      },
+      {
+        "q": "¿Quién cuenta como médico en mi plan?",
+        "a": "Cualquier profesional que atiende pacientes: médicos, odontólogos, psicólogos, nutricionistas… Los cupos son por usuarios activos: si alguien deja la clínica, desactivas su usuario y liberas el cupo."
+      },
+      {
+        "q": "¿Qué son los complementos?",
+        "a": "Son módulos que se suman a cualquier plan: vacunación, administración de medicamentos y procedimientos menores. Puedes contratarlos por separado o los tres en paquete; los precios están en la sección de planes."
+      },
+      {
+        "q": "¿Puedo cambiar de plan?",
+        "a": "Sí. Cuando tu consultorio o clínica crezca, nos escribes y te pasamos al plan que necesites."
+      },
+      {
+        "q": "¿Hay un límite de pacientes o consultas?",
+        "a": "No. En todos los planes puedes registrar los pacientes, consultas, recetas y expedientes que necesites."
+      },
+      {
+        "q": "¿Qué pasa con mis expedientes si cambio de plan?",
+        "a": "Siguen ahí. Cambiar de plan no borra ni bloquea la información de tus pacientes."
+      },
+      {
+        "q": "¿Está en inglés?",
+        "a": "Sí. Cada persona puede usar Medicore en español o en inglés."
+      }
+    ],
+    "sub": "Lo que más nos preguntan los médicos y las clínicas antes de empezar.",
+    "moreTitle": "¿Tienes otra pregunta?",
+    "moreBody": "Escríbenos y te respondemos en el próximo día hábil."
+  },
+  "demo": {
+    "title": "Mira Medicore en acción",
+    "sub": "Déjanos tus datos y te contactamos para agendar una demo gratis de 30 minutos o ayudarte a elegir tu plan.",
+    "name": "Tu nombre",
+    "clinic": "Clínica o consultorio",
+    "optional": "(opcional)",
+    "comment": "Cuéntanos sobre tu clínica",
+    "commentPh": "Por ejemplo: somos 3 médicos, usamos expedientes en papel y queremos empezar el próximo mes.",
+    "email": "Correo electrónico",
+    "phone": "WhatsApp",
+    "submit": "Enviar solicitud",
+    "privacy": "Solo usamos tus datos para contactarte sobre tu solicitud.",
+    "thanksTitle": "¡Listo! Te escribiremos pronto",
+    "thanksBody": "Recibimos tu solicitud. Te contactaremos en el próximo día hábil.",
+    "plan": "Plan de interés",
+    "planNone": "Aún no lo sé"
+  },
+  "foot": {
+    "made": "Hecho en El Salvador",
+    "privacy": "Privacidad",
+    "terms": "Términos"
+  },
+  "meta": {
+    "title": "Medicore — Software para clínicas y consultorios en El Salvador",
+    "description": "Agenda, expedientes, consultas y recetas en un solo lugar. Medicore es el sistema en línea para médicos independientes y clínicas pequeñas y medianas en El Salvador.",
+    "ogAlt": "Medicore: Menos papeleo. Más tiempo para tus pacientes."
+  },
+  "ui": {
+    "skip": "Saltar al contenido",
+    "home": "Medicore, inicio",
+    "menu": "Menú",
+    "lang": "Idioma",
+    "heroImgAlt": "Panel de Medicore con la agenda del día, las citas próximas y un resumen de pacientes atendidos."
+  },
+  "form": {
+    "sending": "Enviando…",
+    "required": "Este campo es obligatorio.",
+    "nameInvalid": "Escribe tu nombre (de 2 a 100 caracteres).",
+    "clinicInvalid": "Escribe el nombre de tu clínica (de 2 a 120 caracteres).",
+    "emailInvalid": "Escribe un correo válido, por ejemplo nombre@clinica.com.",
+    "phoneInvalid": "Escribe un número válido, por ejemplo +503 7000 0000.",
+    "commentInvalid": "El comentario puede tener hasta 1000 caracteres.",
+    "captchaInvalid": "Confirma que no eres un robot.",
+    "errorTitle": "No pudimos enviar tu solicitud",
+    "errorBody": "Revisa tu conexión e inténtalo otra vez. Si el problema sigue, escríbenos a",
+    "rateLimited": "Recibimos varias solicitudes desde tu conexión. Espera un rato e inténtalo otra vez.",
+    "retry": "Intentar de nuevo",
+    "honeypot": "No llenes este campo"
+  },
+  "cookies": {
+    "title": "Usamos cookies",
+    "body": "Usamos cookies esenciales para que el sitio funcione. Con tu permiso, también usaríamos cookies para entender cómo se usa el sitio y mejorarlo.",
+    "more": "Más información",
+    "essential": "Solo esenciales",
+    "all": "Aceptar todas",
+    "settings": "Cookies",
+    "label": "Aviso de cookies"
+  },
+  "legal": {
+    "updated": "Última actualización",
+    "draft": "Borrador",
+    "back": "Volver al inicio"
+  },
+  "thanks": {
+    "title": "¡Listo! Te escribiremos pronto",
+    "body": "Recibimos tu solicitud. Te contactaremos en el próximo día hábil.",
+    "back": "Volver al inicio"
+  },
+  "demoError": {
+    "title": "No pudimos enviar tu solicitud",
+    "body": "Algo salió mal al enviar el formulario. Vuelve a intentarlo o escríbenos directamente.",
+    "back": "Volver al formulario"
+  },
+  "notFound": {
+    "title": "No encontramos esta página",
+    "body": "Puede que el enlace esté mal escrito o que la página ya no exista.",
+    "back": "Ir al inicio"
+  },
+  "pricing": {
+    "eyebrow": "Planes y precios",
+    "title": "Un plan para cada etapa de tu práctica médica",
+    "sub": "Desde tu consultorio privado hasta una clínica con varios especialistas. Digitaliza la gestión de tus pacientes, citas y expedientes clínicos con Medicore.",
+    "note": "Precios mensuales en dólares estadounidenses. Sin necesidad de instalar software.",
+    "perMonth": "/mes",
+    "currency": "USD",
+    "quote": "Cotización personalizada",
+    "soon": "Próximamente",
+    "featured": "Recomendado para clínicas pequeñas",
+    "cta": "Solicitar plan",
+    "ctaSales": "Contáctanos",
+    "ctaAria": "Solicitar el plan {plan}",
+    "units": {
+      "doctors": [
+        "{n} médico",
+        "Hasta {n} médicos"
+      ],
+      "support": [
+        "{n} usuario de apoyo",
+        "Hasta {n} usuarios de apoyo"
+      ],
+      "sites": [
+        "{n} sede",
+        "{n} sedes"
+      ],
+      "storage": "Hasta {n} GB para documentos"
+    },
+    "plans": {
+      "independiente": {
+        "name": "Profesional independiente",
+        "for": "Para médicos con consultorio privado.",
+        "intro": "",
+        "features": [
+          {
+            "text": "Pacientes y expedientes clínicos digitales"
+          },
+          {
+            "text": "Agenda y gestión de citas"
+          },
+          {
+            "text": "Consultas con notas SOAP e historial clínico"
+          },
+          {
+            "text": "Recetas y diagnósticos CIE-10 y CIE-11"
+          },
+          {
+            "text": "Gestión de aseguradoras"
+          },
+          {
+            "text": "Roles y permisos"
+          },
+          {
+            "text": "Panel básico"
+          }
+        ]
+      },
+      "clinica": {
+        "name": "Clínica",
+        "for": "Para clínicas privadas pequeñas con varios profesionales.",
+        "intro": "Todo lo del plan Independiente, más:",
+        "features": [
+          {
+            "text": "Una agenda por médico"
+          },
+          {
+            "text": "Recepción centralizada para todos los médicos"
+          },
+          {
+            "text": "Roles y permisos por usuario"
+          },
+          {
+            "text": "Administración de personal"
+          },
+          {
+            "text": "Panel de la clínica"
+          }
+        ]
+      },
+      "clinica-plus": {
+        "name": "Clínica Plus",
+        "for": "Para clínicas privadas en crecimiento.",
+        "intro": "Todo lo del plan Clínica, más:",
+        "features": [
+          {
+            "text": "Más profesionales y personal de apoyo"
+          },
+          {
+            "text": "Panel con métricas operativas"
+          },
+          {
+            "text": "Soporte prioritario"
+          },
+          {
+            "text": "Reportes avanzados",
+            "soon": true
+          }
+        ]
+      },
+      "empresarial": {
+        "name": "Empresarial",
+        "for": "Para clínicas medianas, centros médicos y organizaciones con necesidades especiales.",
+        "intro": "",
+        "features": [
+          {
+            "text": "Más de 5 médicos y usuarios a la medida"
+          },
+          {
+            "text": "Varias sedes, según disponibilidad técnica"
+          },
+          {
+            "text": "Almacenamiento a la medida"
+          },
+          {
+            "text": "Migración de tu información, previa evaluación"
+          },
+          {
+            "text": "Integraciones, previa evaluación"
+          },
+          {
+            "text": "Capacitación, acompañamiento y soporte a la medida"
+          }
+        ]
+      }
+    },
+    "compare": {
+      "toggle": "Ver la comparativa completa",
+      "caption": "Comparativa de planes de Medicore",
+      "feature": "Característica",
+      "rows": {
+        "price": "Precio mensual",
+        "doctors": "Médicos",
+        "support": "Personal de apoyo",
+        "sites": "Sedes",
+        "patients": "Pacientes registrados",
+        "visits": "Consultas médicas",
+        "records": "Expedientes digitales",
+        "schedule": "Agenda médica",
+        "frontDesk": "Recepción centralizada",
+        "prescriptions": "Recetas médicas",
+        "icd": "Diagnósticos CIE",
+        "roles": "Roles y permisos",
+        "dashboard": "Panel",
+        "reports": "Reportes avanzados",
+        "storage": "Almacenamiento de documentos",
+        "priority": "Soporte prioritario"
+      },
+      "values": {
+        "yes": "Sí",
+        "no": "No",
+        "unlimited": "Sin límite",
+        "custom": "A la medida",
+        "quote": "Cotización",
+        "basic": "Básico",
+        "clinic": "Clínica",
+        "operational": "Métricas operativas",
+        "soon": "Próximamente",
+        "conditions": "Según condiciones"
+      }
+    },
+    "fine": [
+      "Sin límite de pacientes, consultas, recetas ni expedientes.",
+      "El personal de apoyo (recepción, enfermería o administración) comparte un mismo cupo."
+    ],
+    "addons": {
+      "title": "Potencia Medicore según las necesidades de tu clínica",
+      "sub": "Amplía tu sistema con módulos especializados. Se suman a cualquier plan.",
+      "badge": "Complemento",
+      "save": "Ahorras ${n}",
+      "items": {
+        "vacunacion": {
+          "name": "Gestión de vacunación",
+          "body": "Esquema nacional, dosis pendientes y atrasadas por paciente."
+        },
+        "medicamentos": {
+          "name": "Administración de medicamentos",
+          "body": "Inyecciones, sueros y nebulizaciones con aviso de alergias."
+        },
+        "procedimientos": {
+          "name": "Procedimientos menores",
+          "body": "Suturas, curaciones y biopsias con consentimiento y nota."
+        },
+        "paquete": {
+          "name": "Paquete de los tres módulos",
+          "body": "Vacunación, medicamentos y procedimientos juntos."
+        }
+      }
+    }
+  }
+}

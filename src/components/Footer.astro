@@ -1,0 +1,50 @@
+---
+import { routes, useTranslations, type Lang } from '../i18n/utils';
+import { CONTACT_EMAIL } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="footer container">
+  <span class="brand">Medicore</span>
+  <span class="made">{t.foot.made}</span>
+  <a href={routes.privacy[lang]}>{t.foot.privacy}</a>
+  <a href={routes.terms[lang]}>{t.foot.terms}</a>
+  <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+  <span>© {year} Medicore</span>
+</footer>
+
+<style>
+  .footer {
+    padding-top: 64px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-70);
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .made {
+    margin-right: auto;
+  }
+  a {
+    color: var(--ink-70);
+  }
+  a:hover {
+    color: var(--primary);
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+const { href, label } = Astro.props;
+---
+
+<a class="logo" href={href} aria-label={label}>
+  <span class="mark" aria-hidden="true">M</span>
+  <span aria-hidden="true">Medicore</span>
+</a>
+
+<style>
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .logo:hover {
+    color: var(--ink);
+  }
+  .mark {
+    width: 30px;
+    height: 30px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-logo);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+</style>

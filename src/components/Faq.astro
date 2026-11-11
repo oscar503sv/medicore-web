@@ -1,0 +1,115 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+import { CONTACT_EMAIL } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const t = useTranslations(Astro.props.lang);
+---
+
+<section id="preguntas" class="section container faq" aria-labelledby="faq-title">
+  <div class="side">
+    <h2 id="faq-title" class="h2">{t.faq.title}</h2>
+    <p class="lead">{t.faq.sub}</p>
+    <div class="more">
+      <p class="more-title">{t.faq.moreTitle}</p>
+      <p class="more-body">{t.faq.moreBody}</p>
+      <a class="btn btn-dark more-cta" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+    </div>
+  </div>
+  <div class="list">
+    {
+      t.faq.items.map((q) => (
+        <details>
+          <summary>
+            {q.q}
+            <span class="plus" aria-hidden="true">+</span>
+          </summary>
+          <p>{q.a}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .faq {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 32px clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+  .side {
+    position: sticky;
+    top: 110px;
+  }
+  .more {
+    margin-top: 32px;
+    background: var(--primary-light);
+    border-radius: 24px;
+    padding: 24px;
+    max-width: 420px;
+  }
+  .more-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.025em;
+  }
+  .more-body {
+    font-size: 15.5px;
+    line-height: 1.55;
+    margin-top: 6px;
+    color: var(--ink-80);
+  }
+  .more-cta {
+    margin-top: 16px;
+    font-size: 15px;
+    padding: 12px 20px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  details {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px 24px;
+    border: 1px solid var(--border-06);
+  }
+  summary {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.4;
+    border-radius: 8px;
+  }
+  .plus {
+    flex: none;
+    color: var(--primary);
+    font-size: 22px;
+    line-height: 1;
+    transition: transform var(--ease);
+  }
+  details[open] .plus {
+    transform: rotate(45deg);
+  }
+  details p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 12px;
+    color: var(--ink-80);
+  }
+  @media (max-width: 760px) {
+    .side {
+      position: static;
+    }
+  }
+</style>

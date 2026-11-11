@@ -1,0 +1,438 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const t = useTranslations(Astro.props.lang);
+
+const tagBg: Record<string, string> = {
+  mint: 'var(--primary-light)',
+  coral: 'var(--accent-light)',
+  cream: 'var(--neutral-chip)',
+};
+const doseClass: Record<string, string> = { done: 'done', due: 'due', late: 'late' };
+const dotBg: Record<string, string> = {
+  coral: 'var(--accent)',
+  mint: 'var(--primary)',
+  ink: 'var(--ink)',
+};
+---
+
+<section id="funciones" class="section container" aria-labelledby="feat-title">
+  <h2 id="feat-title" class="h2">{t.feat.title}</h2>
+  <p class="lead">{t.feat.sub}</p>
+
+  <div class="bento">
+    <article class="card big agenda">
+      <div>
+        <h3 class="h3">{t.feat.agenda.title}</h3>
+        <p class="body measure">{t.feat.agenda.body}</p>
+      </div>
+      <ul class="rows" aria-hidden="true">
+        {
+          t.feat.agenda.rows.map((r) => (
+            <li class="row">
+              <span class="time">{r.time}</span>
+              <span class="name">{r.name}</span>
+              <span class="tag" style={`background:${tagBg[r.tone]}`}>
+                {r.tag}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+
+    <article class="card small record">
+      <div class="chart" aria-hidden="true">
+        <div class="patient">
+          <span class="avatar">{t.feat.record.mock.initials}</span>
+          <span class="pinfo">
+            <strong>{t.feat.record.mock.name}</strong>
+            <span>{t.feat.record.mock.meta}</span>
+          </span>
+        </div>
+        <span class="allergy">{t.feat.record.mock.allergy}</span>
+        <ul class="stats">
+          {
+            t.feat.record.mock.stats.map((st) => (
+              <li>
+                <strong>{st.n}</strong>
+                <span>{st.label}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <h3 class="h3 sm push">{t.feat.record.title}</h3>
+      <p class="body">{t.feat.record.body}</p>
+    </article>
+
+    <article class="card small consult">
+      <div class="bubbles" aria-hidden="true">
+        <span class="typing">{t.feat.consult.typing}</span>
+        <span class="suggest">{t.feat.consult.suggest}</span>
+      </div>
+      <h3 class="h3 sm push">{t.feat.consult.title}</h3>
+      <p class="body">{t.feat.consult.body}</p>
+    </article>
+
+    <article class="card big vax">
+      <div class="vax-copy">
+        <span class="addon-tag">{t.pricing.addons.badge}</span>
+        <h3 class="h3">{t.feat.vax.title}</h3>
+        <p class="body">{t.feat.vax.body}</p>
+      </div>
+      <ul class="doses" aria-hidden="true">
+        {
+          t.feat.vax.doses.map((d) => (
+            <li>
+              <span class="dose-name">{d.name}</span>
+              <span class:list={['status', doseClass[d.tone]]}>{d.status}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+
+    <div class="minis">
+      {
+        t.feat.small.map((s, i) => (
+          <article class="card mini">
+            <div class="mini-top">
+              <span class="square" style={`background:${dotBg[s.tone]}`} aria-hidden="true" />
+              {i < 2 && <span class="addon-tag">{t.pricing.addons.badge}</span>}
+            </div>
+            <h3 class="h3 xs">{s.title}</h3>
+            <p class="body sm">{s.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .bento {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .card {
+    border-radius: 28px;
+    padding: 32px;
+  }
+  /* Bases sized so rows pair up as [agenda + record] / [consult + vaccines] */
+  .big {
+    flex: 2 1 620px;
+  }
+  .small {
+    flex: 1 1 380px;
+  }
+  .h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .h3.sm {
+    font-size: 26px;
+  }
+  .h3.xs {
+    font-size: 22px;
+    letter-spacing: -0.025em;
+    margin-top: 16px;
+  }
+  .push {
+    margin-top: auto;
+  }
+  .body {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+    color: var(--ink-80);
+  }
+  .body.sm {
+    font-size: 15.5px;
+    margin-top: 8px;
+  }
+  .measure {
+    max-width: 46ch;
+  }
+
+  /* Agenda */
+  .agenda {
+    background: #fff;
+    border: 1px solid var(--border-06);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .rows {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: var(--bg);
+  }
+  .time {
+    font-weight: 800;
+    font-size: 14px;
+    width: 48px;
+    flex: none;
+  }
+  .name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 15px;
+    min-width: 0;
+  }
+  .tag {
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* Record */
+  .record {
+    background: var(--accent);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .record .body {
+    color: var(--ink);
+    margin-top: -14px;
+  }
+  .record {
+    gap: 24px;
+  }
+  .chart {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 340px;
+  }
+  .patient {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .avatar {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .pinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .pinfo strong {
+    font-size: 15px;
+  }
+  .pinfo span {
+    font-size: 13px;
+    color: var(--ink-60);
+  }
+  .allergy {
+    align-self: flex-start;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--danger-bg);
+    color: var(--danger-fg);
+  }
+  .stats {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .stats li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: var(--bg);
+  }
+  .stats strong {
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .stats span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-60);
+  }
+
+  /* Consult */
+  .consult {
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .consult .body {
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: -8px;
+  }
+  .bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .typing,
+  .suggest {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+  .typing {
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .suggest {
+    font-weight: 700;
+    background: var(--primary-light);
+    color: var(--ink);
+  }
+
+  /* Vaccines */
+  .vax {
+    background: var(--primary-light);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-end;
+  }
+  .vax-copy {
+    flex: 1 1 240px;
+  }
+  .doses {
+    flex: 1 1 220px;
+    list-style: none;
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .doses li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  .dose-name {
+    font-weight: 600;
+  }
+  .status {
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .done {
+    background: var(--ok-bg);
+    color: var(--ok-fg);
+  }
+  .due {
+    background: var(--primary);
+    color: #fff;
+  }
+  .late {
+    background: var(--danger-bg);
+    color: var(--danger-fg);
+  }
+
+  /* The three small cards always share their own row */
+  .minis {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Small white cards */
+  .mini {
+    flex: 1 1 300px;
+    background: #fff;
+    padding: 28px 32px;
+    border: 1px solid var(--border-06);
+  }
+  /* Nursing, procedures and vaccines are paid add-ons (see Pricing) */
+  .addon-tag {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    border: 1px solid var(--border-08);
+  }
+  .vax-copy .addon-tag {
+    margin-bottom: 12px;
+  }
+  .mini-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 22px;
+  }
+  .mini .addon-tag {
+    background: var(--bg);
+  }
+  .square {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 24px;
+    }
+  }
+</style>

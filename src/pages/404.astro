@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Message from '../components/Message.astro';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations('es');
+const en = useTranslations('en');
+---
+
+<Base lang="es" route="notFound" title={`${t.notFound.title} — Medicore`} noindex minimalNav>
+  <Message title={t.notFound.title} body={t.notFound.body} href="/" cta={t.notFound.back} icon="?">
+    <p lang="en">{en.notFound.title}. <a href="/en/">{en.notFound.back}</a></p>
+  </Message>
+</Base>

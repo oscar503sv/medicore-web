@@ -1,0 +1,522 @@
+{
+  "nav": {
+    "features": "Features",
+    "who": "Your team",
+    "faq": "FAQ",
+    "login": "Sign in",
+    "cta": "Get a demo",
+    "pricing": "Pricing"
+  },
+  "hero": {
+    "pill": "For practices and clinics in El Salvador",
+    "l1": "Less paperwork.",
+    "l2": "More time for your patients.",
+    "sub": "Medicore brings your schedule, patient records, visits and prescriptions together in one place. Nothing to install: open your browser and you’re in.",
+    "cta": "Get a free demo",
+    "cta2": "See how it works",
+    "fine": "We help you set it up. No commitment.",
+    "slot": "Drop a Medicore screenshot here",
+    "c1a": "Ana Martínez",
+    "c1b": "Check-up",
+    "c2a": "Today’s appointments",
+    "c2b": "+3 vs. last week"
+  },
+  "who": {
+    "stripLabel": "For any specialty",
+    "strip": [
+      "General medicine",
+      "Pediatrics",
+      "Gynecology",
+      "Internal medicine",
+      "Dermatology",
+      "Cardiology",
+      "Family medicine",
+      "Orthopedics"
+    ],
+    "stripMore": "and many more",
+    "title": "Built for your whole team",
+    "items": [
+      {
+        "kicker": "Doctors",
+        "title": "See patients with everything at hand",
+        "points": [
+          "Your schedule and patients on any computer",
+          "The full history at every visit",
+          "Prescriptions and ICD diagnoses in seconds"
+        ],
+        "tone": "white"
+      },
+      {
+        "kicker": "Front desk",
+        "title": "Book without double-booking",
+        "points": [
+          "Every doctor’s appointments in one place",
+          "Each doctor’s hours always in view",
+          "Alerts when an appointment changes"
+        ],
+        "tone": "mint"
+      },
+      {
+        "kicker": "Nursing and admin",
+        "title": "The whole team in sync",
+        "points": [
+          "Access only to what each role needs",
+          "A daily summary for management",
+          "They share your plan’s support-user quota"
+        ],
+        "tone": "ink"
+      }
+    ],
+    "sub": "Everyone signs in with their own user and sees only what their role allows."
+  },
+  "feat": {
+    "title": "Everything your clinic needs",
+    "sub": "Everyday tools, designed so anyone on your team can learn them in minutes.",
+    "agenda": {
+      "title": "A schedule with no double-booking",
+      "body": "Book around each doctor’s hours. If someone cancels or reschedules, you know right away.",
+      "rows": [
+        {
+          "time": "08:00",
+          "name": "Carlos Hernández",
+          "tag": "Confirmed",
+          "tone": "mint"
+        },
+        {
+          "time": "09:30",
+          "name": "Sofía Rivas",
+          "tag": "New patient",
+          "tone": "coral"
+        },
+        {
+          "time": "10:30",
+          "name": "Ana Martínez",
+          "tag": "Check-up",
+          "tone": "cream"
+        }
+      ]
+    },
+    "record": {
+      "title": "One record per patient",
+      "body": "Visits, diagnoses, prescriptions and allergies, all in the same chart and always at hand.",
+      "mock": {
+        "initials": "AM",
+        "name": "Ana Martínez",
+        "meta": "34 yrs · Chart 0142",
+        "allergy": "Allergy: penicillin",
+        "stats": [
+          {
+            "n": "12",
+            "label": "Visits"
+          },
+          {
+            "n": "8",
+            "label": "Prescriptions"
+          },
+          {
+            "n": "5",
+            "label": "Diagnoses"
+          }
+        ]
+      }
+    },
+    "consult": {
+      "title": "Faster visits",
+      "body": "Start typing and Medicore suggests the diagnosis. Prescriptions are saved to the chart.",
+      "typing": "Pharyngitis…",
+      "suggest": "J02.9 Acute pharyngitis"
+    },
+    "vax": {
+      "title": "Vaccines always up to date",
+      "body": "Follows the national vaccination schedule. You know which dose each patient needs and which are overdue.",
+      "doses": [
+        {
+          "name": "Hepatitis B",
+          "status": "Given",
+          "tone": "done"
+        },
+        {
+          "name": "Pentavalent 2",
+          "status": "Due today",
+          "tone": "due"
+        },
+        {
+          "name": "Pneumococcal",
+          "status": "Overdue",
+          "tone": "late"
+        }
+      ]
+    },
+    "small": [
+      {
+        "title": "Organized nursing",
+        "body": "Injections, IV fluids and nebulizations logged, with a warning if the patient is allergic.",
+        "tone": "coral"
+      },
+      {
+        "title": "Minor procedures",
+        "body": "Sutures, wound care or biopsies with consent and notes, start to finish.",
+        "tone": "mint"
+      },
+      {
+        "title": "Your day at a glance",
+        "body": "How many appointments today, how many to go, and how you compare with last week.",
+        "tone": "ink"
+      }
+    ]
+  },
+  "steps": {
+    "title": "Getting started is easier than you think",
+    "items": [
+      {
+        "n": "Step 1",
+        "title": "Request your demo",
+        "body": "We show you Medicore on a short video call and answer your questions."
+      },
+      {
+        "n": "Step 2",
+        "title": "We set up your clinic",
+        "body": "We help you pick a plan and, together, set up your doctors, hours and team."
+      },
+      {
+        "n": "Step 3",
+        "title": "Start seeing patients",
+        "body": "Your team signs in from the browser. No installs, no servers."
+      }
+    ]
+  },
+  "sec": {
+    "pill": "Your data, protected",
+    "title": "Your patients’ information is in good hands",
+    "sub": "Medical information is sensitive. That’s why Medicore looks after every access.",
+    "items": [
+      {
+        "title": "Only your clinic",
+        "body": "No one outside your team can see your patients’ information."
+      },
+      {
+        "title": "Everyone, their own part",
+        "body": "You decide what each person can see and do: doctors, nursing or front desk."
+      },
+      {
+        "title": "Everything is logged",
+        "body": "You know who opened a record and when."
+      },
+      {
+        "title": "Nothing gets lost",
+        "body": "A signed visit can’t be deleted. Mistakes are corrected and the history is kept."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "Do I need to install anything?",
+        "a": "No. Medicore works online: all you need is internet and a browser on your computer."
+      },
+      {
+        "q": "Do I need to be good with technology?",
+        "a": "Not at all. It’s designed so anyone on your team can use it from day one, and we help you set it up."
+      },
+      {
+        "q": "Which plan is right for me?",
+        "a": "If you work alone, Independent professional. For several doctors, Clinic or Clinic Plus depending on how many you are. For larger centers or several locations, Enterprise. We’ll help you choose in the demo."
+      },
+      {
+        "q": "Who counts as a doctor on my plan?",
+        "a": "Any professional who sees patients: doctors, dentists, psychologists, nutritionists… Quotas are based on active users: if someone leaves the clinic, you deactivate their user and free up the spot."
+      },
+      {
+        "q": "What are add-ons?",
+        "a": "Modules you can add to any plan: vaccination, medication administration and minor procedures. Get them separately or all three as a bundle; prices are in the plans section."
+      },
+      {
+        "q": "Can I change plans?",
+        "a": "Yes. When your practice grows, just write to us and we’ll move you to the plan you need."
+      },
+      {
+        "q": "Is there a limit on patients or visits?",
+        "a": "No. On every plan you can record as many patients, visits, prescriptions and records as you need."
+      },
+      {
+        "q": "What happens to my records if I change plans?",
+        "a": "They stay put. Changing plans doesn’t delete or lock your patients’ information."
+      },
+      {
+        "q": "Is it available in Spanish?",
+        "a": "Yes. Each person can use Medicore in Spanish or English."
+      }
+    ],
+    "sub": "What doctors and clinics ask us most before getting started.",
+    "moreTitle": "Have another question?",
+    "moreBody": "Email us and we’ll reply within one business day."
+  },
+  "demo": {
+    "title": "See Medicore in action",
+    "sub": "Leave your details and we’ll reach out to schedule a free 30-minute demo or help you pick a plan.",
+    "name": "Your name",
+    "clinic": "Clinic or practice",
+    "optional": "(optional)",
+    "comment": "Tell us about your clinic",
+    "commentPh": "For example: we’re 3 doctors, we use paper charts and want to start next month.",
+    "email": "Email",
+    "phone": "WhatsApp",
+    "submit": "Send request",
+    "privacy": "We only use your details to contact you about your request.",
+    "thanksTitle": "All set! We’ll be in touch",
+    "thanksBody": "We received your request and will contact you within one business day.",
+    "plan": "Plan of interest",
+    "planNone": "Not sure yet"
+  },
+  "foot": {
+    "made": "Made in El Salvador",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "meta": {
+    "title": "Medicore — Software for clinics and private practices in El Salvador",
+    "description": "Schedule, patient records, visits and prescriptions in one place. Medicore is online software for independent doctors and small and mid-sized clinics in El Salvador.",
+    "ogAlt": "Medicore: Less paperwork. More time for your patients."
+  },
+  "ui": {
+    "skip": "Skip to content",
+    "home": "Medicore, home",
+    "menu": "Menu",
+    "lang": "Language",
+    "heroImgAlt": "Medicore dashboard showing today’s schedule, upcoming appointments and a summary of patients seen."
+  },
+  "form": {
+    "sending": "Sending…",
+    "required": "This field is required.",
+    "nameInvalid": "Enter your name (2 to 100 characters).",
+    "clinicInvalid": "Enter your clinic’s name (2 to 120 characters).",
+    "emailInvalid": "Enter a valid email, for example name@clinic.com.",
+    "phoneInvalid": "Enter a valid number, for example +503 7000 0000.",
+    "commentInvalid": "The comment can be up to 1000 characters.",
+    "captchaInvalid": "Please confirm you’re not a robot.",
+    "errorTitle": "We couldn’t send your request",
+    "errorBody": "Check your connection and try again. If it keeps happening, email us at",
+    "rateLimited": "We received several requests from your connection. Please wait a while and try again.",
+    "retry": "Try again",
+    "honeypot": "Leave this field empty"
+  },
+  "cookies": {
+    "title": "We use cookies",
+    "body": "We use essential cookies to make the site work. With your permission, we’d also use cookies to understand how the site is used and improve it.",
+    "more": "Learn more",
+    "essential": "Essential only",
+    "all": "Accept all",
+    "settings": "Cookies",
+    "label": "Cookie notice"
+  },
+  "legal": {
+    "updated": "Last updated",
+    "draft": "Draft",
+    "back": "Back to home"
+  },
+  "thanks": {
+    "title": "All set! We’ll be in touch",
+    "body": "We received your request and will contact you within one business day.",
+    "back": "Back to home"
+  },
+  "demoError": {
+    "title": "We couldn’t send your request",
+    "body": "Something went wrong while sending the form. Please try again or email us directly.",
+    "back": "Back to the form"
+  },
+  "notFound": {
+    "title": "We couldn’t find this page",
+    "body": "The link may be mistyped or the page may no longer exist.",
+    "back": "Go to home"
+  },
+  "pricing": {
+    "eyebrow": "Plans and pricing",
+    "title": "A plan for every stage of your practice",
+    "sub": "From your private practice to a clinic with several specialists. Go digital with your patients, appointments and medical records with Medicore.",
+    "note": "Monthly prices in US dollars. No software to install.",
+    "perMonth": "/mo",
+    "currency": "USD",
+    "quote": "Custom quote",
+    "soon": "Coming soon",
+    "featured": "Recommended for small clinics",
+    "cta": "Request plan",
+    "ctaSales": "Contact us",
+    "ctaAria": "Request the {plan} plan",
+    "units": {
+      "doctors": [
+        "{n} doctor",
+        "Up to {n} doctors"
+      ],
+      "support": [
+        "{n} support user",
+        "Up to {n} support users"
+      ],
+      "sites": [
+        "{n} location",
+        "{n} locations"
+      ],
+      "storage": "Up to {n} GB for documents"
+    },
+    "plans": {
+      "independiente": {
+        "name": "Independent professional",
+        "for": "For doctors with a private practice.",
+        "intro": "",
+        "features": [
+          {
+            "text": "Patients and digital medical records"
+          },
+          {
+            "text": "Schedule and appointment management"
+          },
+          {
+            "text": "Visits with SOAP notes and medical history"
+          },
+          {
+            "text": "Prescriptions and ICD-10 / ICD-11 diagnoses"
+          },
+          {
+            "text": "Insurance management"
+          },
+          {
+            "text": "Roles and permissions"
+          },
+          {
+            "text": "Basic dashboard"
+          }
+        ]
+      },
+      "clinica": {
+        "name": "Clinic",
+        "for": "For small private clinics with several professionals.",
+        "intro": "Everything in Independent, plus:",
+        "features": [
+          {
+            "text": "One schedule per doctor"
+          },
+          {
+            "text": "Central front desk for every doctor"
+          },
+          {
+            "text": "Per-user roles and permissions"
+          },
+          {
+            "text": "Staff management"
+          },
+          {
+            "text": "Clinic dashboard"
+          }
+        ]
+      },
+      "clinica-plus": {
+        "name": "Clinic Plus",
+        "for": "For growing private clinics.",
+        "intro": "Everything in Clinic, plus:",
+        "features": [
+          {
+            "text": "More professionals and support staff"
+          },
+          {
+            "text": "Dashboard with operational metrics"
+          },
+          {
+            "text": "Priority support"
+          },
+          {
+            "text": "Advanced reports",
+            "soon": true
+          }
+        ]
+      },
+      "empresarial": {
+        "name": "Enterprise",
+        "for": "For mid-sized clinics, medical centers and organizations with special needs.",
+        "intro": "",
+        "features": [
+          {
+            "text": "More than 5 doctors and custom user counts"
+          },
+          {
+            "text": "Multiple locations, subject to technical availability"
+          },
+          {
+            "text": "Custom storage"
+          },
+          {
+            "text": "Data migration, after assessment"
+          },
+          {
+            "text": "Integrations, after assessment"
+          },
+          {
+            "text": "Custom training, onboarding and support"
+          }
+        ]
+      }
+    },
+    "compare": {
+      "toggle": "See the full comparison",
+      "caption": "Medicore plan comparison",
+      "feature": "Feature",
+      "rows": {
+        "price": "Monthly price",
+        "doctors": "Doctors",
+        "support": "Support staff",
+        "sites": "Locations",
+        "patients": "Registered patients",
+        "visits": "Medical visits",
+        "records": "Digital records",
+        "schedule": "Medical schedule",
+        "frontDesk": "Central front desk",
+        "prescriptions": "Prescriptions",
+        "icd": "ICD diagnoses",
+        "roles": "Roles and permissions",
+        "dashboard": "Dashboard",
+        "reports": "Advanced reports",
+        "storage": "Document storage",
+        "priority": "Priority support"
+      },
+      "values": {
+        "yes": "Yes",
+        "no": "No",
+        "unlimited": "Unlimited",
+        "custom": "Custom",
+        "quote": "Quote",
+        "basic": "Basic",
+        "clinic": "Clinic",
+        "operational": "Operational metrics",
+        "soon": "Coming soon",
+        "conditions": "Per agreement"
+      }
+    },
+    "fine": [
+      "No limits on patients, visits, prescriptions or records.",
+      "Support staff (front desk, nursing or admin) share a single quota."
+    ],
+    "addons": {
+      "title": "Power up Medicore to fit your clinic",
+      "sub": "Extend your system with specialized modules. They work with any plan.",
+      "badge": "Add-on",
+      "save": "Save ${n}",
+      "items": {
+        "vacunacion": {
+          "name": "Vaccination management",
+          "body": "National schedule, pending and overdue doses for each patient."
+        },
+        "medicamentos": {
+          "name": "Medication administration",
+          "body": "Injections, IV fluids and nebulizations with allergy warnings."
+        },
+        "procedimientos": {
+          "name": "Minor procedures",
+          "body": "Sutures, wound care and biopsies with consent and notes."
+        },
+        "paquete": {
+          "name": "Three-module bundle",
+          "body": "Vaccination, medication and procedures together."
+        }
+      }
+    }
+  }
+}

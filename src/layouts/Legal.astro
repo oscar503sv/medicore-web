@@ -1,0 +1,140 @@
+---
+import Base from './Base.astro';
+import { routes, useTranslations, type Lang, type RouteKey } from '../i18n/utils';
+
+interface Props {
+  frontmatter: {
+    lang: Lang;
+    route: RouteKey;
+    title: string;
+    description: string;
+    updated: string;
+  };
+}
+
+const { lang, route, title, description, updated } = Astro.props.frontmatter;
+const t = useTranslations(lang);
+const updatedLabel = new Intl.DateTimeFormat(lang === 'es' ? 'es-SV' : 'en-US', {
+  dateStyle: 'long',
+  timeZone: 'UTC',
+}).format(new Date(updated));
+---
+
+<Base lang={lang} route={route} title={`${title} — Medicore`} description={description} minimalNav>
+  <article class="legal container">
+    <header>
+      <a class="back" href={routes.home[lang]}>← {t.legal.back}</a>
+      <h1>{title}</h1>
+      <p class="meta">
+        {t.legal.updated}: <time datetime={updated}>{updatedLabel}</time>
+      </p>
+      <p class="draft">{t.legal.draft}</p>
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .legal {
+    padding-top: clamp(32px, 6vw, 72px);
+  }
+  header,
+  .prose {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .back {
+    font-weight: 700;
+    font-size: 15px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    margin-top: 20px;
+  }
+  .meta {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-60);
+  }
+  .draft {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--primary-light);
+  }
+  .prose {
+    margin-top: 40px;
+    background: #fff;
+    border: 1px solid var(--border-06);
+    border-radius: 28px;
+    padding: clamp(24px, 5vw, 48px);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-80);
+  }
+  .prose :global(h2) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-top: 36px;
+    scroll-margin-top: 100px;
+  }
+  .prose :global(h2:first-child) {
+    margin-top: 0;
+  }
+  .prose :global(h3) {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    margin-top: 24px;
+  }
+  .prose :global(p),
+  .prose :global(ul),
+  .prose :global(table) {
+    margin-top: 12px;
+  }
+  .prose :global(ul) {
+    padding-left: 1.25em;
+  }
+  .prose :global(li + li) {
+    margin-top: 6px;
+  }
+  .prose :global(strong) {
+    color: var(--ink);
+  }
+  .prose :global(a) {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    display: block;
+    overflow-x: auto;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-08);
+  }
+  .prose :global(th) {
+    color: var(--ink);
+  }
+</style>

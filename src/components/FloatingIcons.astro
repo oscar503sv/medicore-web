@@ -1,0 +1,96 @@
+---
+import stethoscope from 'lucide-static/icons/stethoscope.svg?raw';
+import calendarCheck from 'lucide-static/icons/calendar-check.svg?raw';
+import heartPulse from 'lucide-static/icons/heart-pulse.svg?raw';
+import syringe from 'lucide-static/icons/syringe.svg?raw';
+import clipboardList from 'lucide-static/icons/clipboard-list.svg?raw';
+import pill from 'lucide-static/icons/pill.svg?raw';
+import shieldCheck from 'lucide-static/icons/shield-check.svg?raw';
+import users from 'lucide-static/icons/users.svg?raw';
+
+// [svg, left, top(px), size(px), rotation(deg)]
+const items: [string, string, number, number, number][] = [
+  [stethoscope, '64%', 30, 60, -8],
+  [calendarCheck, '84%', 70, 54, 6],
+  [heartPulse, '74%', 190, 68, 0],
+  [syringe, '93%', 250, 50, 12],
+  [clipboardList, '66%', 330, 54, -6],
+  [pill, '85%', 400, 52, 0],
+  [shieldCheck, '73%', 500, 48, 0],
+  [users, '94%', 530, 46, -4],
+];
+
+// Strip the license comment and fixed size so CSS controls the icon size.
+const clean = (svg: string) =>
+  svg
+    .replace(/<!--[\s\S]*?-->/, '')
+    .replace(/\s(width|height)="24"/g, '')
+    .replace('<svg', '<svg aria-hidden="true" focusable="false"')
+    .trim();
+---
+
+<div class="floating" aria-hidden="true">
+  <div class="glow"></div>
+  {
+    items.map(([svg, left, top, size, rot], i) => (
+      <div
+        class="bubble"
+        style={`left:${left};top:${top}px;width:${size}px;height:${size}px;--r:${rot}deg;--dur:${5 + (i % 3)}s;--delay:${i * 0.6}s`}
+        set:html={clean(svg)}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .floating {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: none;
+  }
+  @media (min-width: 1140px) {
+    .floating {
+      display: block;
+    }
+  }
+  .glow {
+    position: absolute;
+    right: 4%;
+    top: -40px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--primary-light) 0%, transparent 68%);
+    opacity: 0.9;
+  }
+  .bubble {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--border-06);
+    box-shadow: 0 10px 30px -12px rgba(124, 58, 237, 0.35);
+    color: var(--primary);
+    transform: rotate(var(--r));
+    animation: float var(--dur) ease-in-out var(--delay) infinite alternate;
+  }
+  .bubble :global(svg) {
+    width: 44%;
+    height: 44%;
+  }
+  @keyframes float {
+    from {
+      transform: translateY(0) rotate(var(--r));
+    }
+    to {
+      transform: translateY(-14px) rotate(var(--r));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bubble {
+      animation: none;
+    }
+  }
+</style>

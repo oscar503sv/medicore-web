@@ -1,0 +1,83 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const t = useTranslations(Astro.props.lang);
+---
+
+<section id="seguridad" class="section container" aria-labelledby="sec-title">
+  <div class="block">
+    <div>
+      <span class="pill">{t.sec.pill}</span>
+      <h2 id="sec-title">{t.sec.title}</h2>
+      <p class="sub">{t.sec.sub}</p>
+    </div>
+    <div class="items">
+      {
+        t.sec.items.map((s) => (
+          <div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .block {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 36px;
+    padding: clamp(32px, 6vw, 72px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 40px clamp(32px, 6vw, 80px);
+  }
+  .pill {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--primary-light);
+    color: var(--ink);
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    margin-top: 20px;
+  }
+  .sub {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 42ch;
+  }
+  .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 28px 32px;
+    align-content: center;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    color: var(--primary-light);
+  }
+  .items p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>

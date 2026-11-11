@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+import bricolageLatin from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-opsz-normal.woff2?url';
+import manropeLatin from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { routes, ogLocale, useTranslations, type Lang, type RouteKey } from '../i18n/utils';
+import { SITE_URL } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+  /** Hide the section links of the nav (legal/utility pages). */
+  minimalNav?: boolean;
+}
+
+const { lang, route, title, description, noindex = false, jsonLd = [], minimalNav = false } = Astro.props;
+const t = useTranslations(lang);
+const pageTitle = title ?? t.meta.title;
+const pageDescription = description ?? t.meta.description;
+const other: Lang = lang === 'es' ? 'en' : 'es';
+
+const abs = (path: string) => new URL(path, SITE_URL).href;
+const canonical = abs(routes[route][lang]);
+const hasAlternates = route !== 'notFound';
+const ogImage = abs(`/og-${lang}.png`);
+
+const serialize = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang={lang} dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : null}
+    <link rel="canonical" href={canonical} />
+    {
+      hasAlternates && (
+        <>
+          <link rel="alternate" hreflang="es" href={abs(routes[route].es)} />
+          <link rel="alternate" hreflang="en" href={abs(routes[route].en)} />
+          <link rel="alternate" hreflang="x-default" href={abs(routes[route].es)} />
+        </>
+      )
+    }
+
+    <link rel="preload" href={bricolageLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={manropeLatin} as="font" type="font/woff2" crossorigin />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#F7F6FA" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Medicore" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale[lang]} />
+    <meta property="og:locale:alternate" content={ogLocale[other]} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t.meta.ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={t.meta.ogAlt} />
+
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={serialize(data)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">{t.ui.skip}</a>
+    <Nav lang={lang} route={route} minimal={minimalNav} />
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<style>
+  main:focus {
+    outline: none;
+  }
+</style>

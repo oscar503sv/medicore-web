@@ -1,0 +1,76 @@
+---
+/** Simple centered message page body (thanks, errors, 404). */
+interface Props {
+  title: string;
+  body: string;
+  href: string;
+  cta: string;
+  icon?: string;
+  tone?: 'ok' | 'error';
+}
+const { title, body, href, cta, icon = '✓', tone = 'ok' } = Astro.props;
+---
+
+<section class="msg container">
+  <div class="card">
+    <span class:list={['icon', tone]} aria-hidden="true">{icon}</span>
+    <h1>{title}</h1>
+    <p>{body}</p>
+    <slot />
+    <a class="btn btn-dark" href={href}>{cta}</a>
+  </div>
+</section>
+
+<style>
+  .msg {
+    padding-top: clamp(40px, 8vw, 96px);
+    padding-bottom: 24px;
+  }
+  .card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--border-06);
+    border-radius: 36px;
+    padding: clamp(32px, 6vw, 56px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 22px;
+  }
+  .ok {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+  .error {
+    background: var(--danger-bg);
+    color: var(--danger-fg);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-top: 6px;
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-80);
+  }
+  .btn {
+    margin-top: 12px;
+    font-size: 16px;
+    padding: 14px 22px;
+  }
+</style>

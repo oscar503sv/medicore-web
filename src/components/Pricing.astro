@@ -1,0 +1,534 @@
+---
+import checkSvg from 'lucide-static/icons/check.svg?raw';
+import stethoscopeSvg from 'lucide-static/icons/stethoscope.svg?raw';
+import usersSvg from 'lucide-static/icons/users.svg?raw';
+import pinSvg from 'lucide-static/icons/map-pin.svg?raw';
+import folderSvg from 'lucide-static/icons/folder.svg?raw';
+import { useTranslations, type Lang } from '../i18n/utils';
+import { plans, addons, compareRows, type Plan, type CompareCell } from '../data/plans';
+import { inlineIcon } from '../lib/icon';
+
+interface Props {
+  lang: Lang;
+}
+const t = useTranslations(Astro.props.lang);
+const p = t.pricing;
+
+const icon = {
+  check: inlineIcon(checkSvg),
+  doctors: inlineIcon(stethoscopeSvg),
+  support: inlineIcon(usersSvg),
+  sites: inlineIcon(pinSvg),
+  storage: inlineIcon(folderSvg),
+};
+
+const fmt = (tpl: string, vars: Record<string, string | number>) =>
+  tpl.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ''));
+const plural = (forms: string[], n: number) => fmt(n === 1 ? forms[0] : forms[1], { n });
+const money = (n: number) => `$${n}`;
+
+const copy = (plan: Plan) => p.plans[plan.id];
+const units = (plan: Plan) =>
+  [
+    plan.doctors && { key: 'doctors', text: plural(p.units.doctors, plan.doctors) },
+    plan.supportUsers && { key: 'support', text: plural(p.units.support, plan.supportUsers) },
+    plan.sites && { key: 'sites', text: plural(p.units.sites, plan.sites) },
+    plan.storageGb && { key: 'storage', text: fmt(p.units.storage, { n: plan.storageGb }), soon: true },
+  ].filter(Boolean) as { key: keyof typeof icon; text: string; soon?: boolean }[];
+
+const tiers = plans.filter((pl) => pl.price !== null);
+const enterprise = plans.find((pl) => pl.price === null)!;
+
+const cell = (c: CompareCell, plan: Plan): { text: string; soon?: boolean } => {
+  switch (c.kind) {
+    case 'token':
+      return { text: p.compare.values[c.token], soon: c.token === 'soon' };
+    case 'price':
+      return { text: plan.price === null ? p.compare.values.quote : `${money(plan.price)}${p.perMonth}` };
+    case 'number': {
+      const v = plan[c.field];
+      return { text: v === null ? p.compare.values.custom : String(v) };
+    }
+    case 'storage':
+      return { text: plan.storageGb === null ? p.compare.values.custom : `${plan.storageGb} GB`, soon: plan.storageGb !== null };
+  }
+};
+
+const bundle = addons.find((a) => a.id === 'paquete')!;
+const bundleSavings = addons.filter((a) => a.id !== 'paquete').reduce((s, a) => s + a.price, 0) - bundle.price;
+---
+
+<section id="precios" class="section container" aria-labelledby="pricing-title">
+  <p class="eyebrow">{p.eyebrow}</p>
+  <h2 id="pricing-title" class="h2 wide">{p.title}</h2>
+  <p class="lead">{p.sub}</p>
+
+  <div class="tiers">
+    {
+      tiers.map((plan) => (
+        <article class:list={['plan', { featured: plan.featured }]} aria-labelledby={`plan-${plan.id}`}>
+          {plan.featured && <span class="badge">{p.featured}</span>}
+          <h3 id={`plan-${plan.id}`}>{copy(plan).name}</h3>
+          <p class="for">{copy(plan).for}</p>
+          <p class="price">
+            <span class="amount">{money(plan.price!)}</span>
+            <span class="per">
+              {p.perMonth} {p.currency}
+            </span>
+          </p>
+          <ul class="units">
+            {units(plan).map((u) => (
+              <li>
+                <span class="ico" set:html={icon[u.key]} />
+                <span>
+                  {u.text} {u.soon && <span class="soon">{p.soon}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <a
+            class:list={['btn', plan.featured ? 'btn-primary' : 'btn-dark', 'plan-cta']}
+            href="#demo"
+            data-plan={plan.id}
+            aria-label={fmt(p.ctaAria, { plan: copy(plan).name })}
+          >
+            {p.cta}
+          </a>
+          <div class="feats">
+            {copy(plan).intro && <p class="intro">{copy(plan).intro}</p>}
+            <ul>
+              {copy(plan).features.map((f: { text: string; soon?: boolean }) => (
+                <li>
+                  <span class="check" set:html={icon.check} />
+                  <span>
+                    {f.text} {f.soon && <span class="soon">{p.soon}</span>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <article class="enterprise" aria-labelledby="plan-empresarial">
+    <div class="ent-copy">
+      <h3 id="plan-empresarial">{copy(enterprise).name}</h3>
+      <p class="for">{copy(enterprise).for}</p>
+      <p class="ent-price">{p.quote}</p>
+      <a
+        class="btn btn-light plan-cta"
+        href="#demo"
+        data-plan={enterprise.id}
+        aria-label={fmt(p.ctaAria, { plan: copy(enterprise).name })}
+      >
+        {p.ctaSales}
+      </a>
+    </div>
+    <ul class="ent-feats">
+      {
+        copy(enterprise).features.map((f: { text: string }) => (
+          <li>
+            <span class="check" set:html={icon.check} />
+            <span>{f.text}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+
+  <ul class="fine">
+    <li>{p.note}</li>
+    {p.fine.map((f) => <li>{f}</li>)}
+  </ul>
+
+  <details class="compare">
+    <summary>
+      {p.compare.toggle}
+      <span class="plus" aria-hidden="true">+</span>
+    </summary>
+    <div class="table-wrap">
+      <table>
+        <caption class="sr-only">{p.compare.caption}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{p.compare.feature}</th>
+            {plans.map((plan) => <th scope="col">{copy(plan).name}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {
+            compareRows.map((row) => (
+              <tr>
+                <th scope="row">{p.compare.rows[row.key as keyof typeof p.compare.rows]}</th>
+                {row.cells.map((c, i) => {
+                  const v = cell(c, plans[i]);
+                  return (
+                    <td>
+                      {v.soon && c.kind === 'token' ? <span class="soon">{v.text}</span> : v.text}
+                      {v.soon && c.kind === 'storage' && <span class="soon">{p.soon}</span>}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>
+
+<section class="section container addons-section" aria-labelledby="addons-title">
+  <h2 id="addons-title" class="h2 addons-title">{p.addons.title}</h2>
+  <p class="lead">{p.addons.sub}</p>
+  <ul class="addons">
+    {
+      addons.map((a) => (
+        <li class:list={['addon', { bundle: a.id === 'paquete' }]}>
+          <span class="addon-badge">
+            {a.id === 'paquete' ? fmt(p.addons.save, { n: bundleSavings }) : p.addons.badge}
+          </span>
+          <h3>{p.addons.items[a.id].name}</h3>
+          <p>{p.addons.items[a.id].body}</p>
+          <p class="addon-price">
+            <span class="amount">+{money(a.price)}</span>
+            <span class="per">{p.perMonth}</span>
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .eyebrow {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 14px;
+  }
+  .wide {
+    max-width: 20ch;
+  }
+
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 16px;
+    margin-top: 48px;
+    align-items: start;
+  }
+  .plan {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--border-06);
+    border-radius: 28px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .plan.featured {
+    border: 2px solid var(--primary);
+    padding: 31px;
+    box-shadow: 0 30px 60px -36px rgba(124, 58, 237, 0.45);
+  }
+  .badge {
+    position: absolute;
+    top: -14px;
+    left: 30px;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #fff;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .for {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 6px;
+    color: var(--ink-80);
+    min-height: 3em;
+  }
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 20px;
+  }
+  .amount {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 56px;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+  .per {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink-60);
+  }
+  .units {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .units li,
+  .feats li,
+  .ent-feats li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .units li {
+    font-weight: 700;
+  }
+  .ico,
+  .check {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    color: var(--primary);
+  }
+  .ico :global(svg),
+  .check :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+  .soon {
+    display: inline-block;
+    vertical-align: 1px;
+    margin-left: 4px;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.4;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent-light);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .plan-cta {
+    margin-top: 24px;
+    font-size: 16px;
+    padding: 14px 22px;
+  }
+  .feats {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border-08);
+  }
+  .intro {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .feats ul,
+  .ent-feats {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feats li {
+    color: var(--ink-80);
+  }
+
+  @media (max-width: 700px) {
+    .for {
+      min-height: 0;
+    }
+  }
+
+  /* Enterprise */
+  .enterprise {
+    margin-top: 16px;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 28px;
+    padding: clamp(28px, 4vw, 40px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 28px clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+  .enterprise .for {
+    color: rgba(255, 255, 255, 0.78);
+    min-height: 0;
+    max-width: 44ch;
+  }
+  .ent-price {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    margin-top: 16px;
+    color: var(--primary-light);
+  }
+  .enterprise .plan-cta {
+    margin-top: 20px;
+  }
+  .ent-feats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+    gap: 12px 24px;
+  }
+  .ent-feats li {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .ent-feats .check {
+    color: var(--accent);
+  }
+
+  .fine {
+    list-style: none;
+    padding: 0;
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-60);
+  }
+
+  /* Comparison */
+  .compare {
+    margin-top: 24px;
+    background: #fff;
+    border: 1px solid var(--border-06);
+    border-radius: 20px;
+    padding: 20px 24px;
+  }
+  .compare summary {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-weight: 700;
+    font-size: 17px;
+    border-radius: 8px;
+  }
+  .compare .plus {
+    color: var(--primary);
+    font-size: 22px;
+    line-height: 1;
+    transition: transform var(--ease);
+  }
+  .compare[open] .plus {
+    transform: rotate(45deg);
+  }
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 16px;
+  }
+  table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-08);
+    vertical-align: top;
+  }
+  thead th {
+    font-family: var(--font-display);
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+  tbody th {
+    font-weight: 600;
+  }
+  td {
+    color: var(--ink-80);
+  }
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  /* Add-ons */
+  .addons-section {
+    padding-top: clamp(48px, 6vw, 72px);
+  }
+  .addons-title {
+    font-size: clamp(28px, 3.4vw, 40px);
+    max-width: 24ch;
+  }
+  .addons {
+    list-style: none;
+    padding: 0;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 16px;
+  }
+  .addon {
+    background: #fff;
+    border: 1px solid var(--border-06);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .addon.bundle {
+    background: var(--accent-light);
+    border-color: transparent;
+  }
+  .addon-badge {
+    align-self: flex-start;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--bg);
+  }
+  .bundle .addon-badge {
+    background: var(--primary);
+    color: #fff;
+  }
+  .addon h3 {
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    margin-top: 6px;
+  }
+  .addon p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-80);
+  }
+  .addon-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 10px;
+  }
+  .addon-price .amount {
+    font-size: 30px;
+  }
+</style>

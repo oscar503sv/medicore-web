@@ -1,0 +1,51 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const t = useTranslations(Astro.props.lang);
+---
+
+<section class="strip container" aria-labelledby="strip-label">
+  <p id="strip-label" class="label">{t.who.stripLabel}</p>
+  <ul>
+    {t.who.strip.map((s) => <li class="chip">{s}</li>)}
+    <li class="chip more">{t.who.stripMore}</li>
+  </ul>
+</section>
+
+<style>
+  .strip {
+    padding-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 15px;
+    margin-right: 6px;
+  }
+  ul {
+    display: contents;
+    list-style: none;
+  }
+  .chip {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--border-08);
+  }
+  .more {
+    background: transparent;
+    font-weight: 700;
+    padding: 8px 16px;
+    color: var(--primary);
+    border: 1.5px dashed var(--primary);
+  }
+</style>

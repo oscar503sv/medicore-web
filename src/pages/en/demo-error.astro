@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import Message from '../../components/Message.astro';
+import { routes, useTranslations } from '../../i18n/utils';
+import { CONTACT_EMAIL } from '../../lib/site';
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<Base lang={lang} route="demoError" title={`${t.demoError.title} — Medicore`} noindex minimalNav>
+  <Message title={t.demoError.title} body={t.demoError.body} href={`${routes.home[lang]}#demo`} cta={t.demoError.back} icon="!" tone="error">
+    <p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+  </Message>
+</Base>
