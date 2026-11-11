@@ -75,6 +75,10 @@ const clean = (svg: string) =>
     color: var(--primary);
     transform: rotate(var(--r));
     animation: float var(--dur) ease-in-out var(--delay) infinite alternate;
+    /* Rasterize once on its own layer and move it as a texture, so the thin
+       icon strokes don't snap between pixels (shimmer) while floating. */
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .bubble :global(svg) {
     width: 44%;
