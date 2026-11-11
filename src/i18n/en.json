@@ -246,7 +246,7 @@
     ],
     "sub": "What doctors and clinics ask us most before getting started.",
     "moreTitle": "Have another question?",
-    "moreBody": "Email us and we’ll reply within one business day."
+    "moreBody": "Email us and we’ll be happy to help you sort it out."
   },
   "demo": {
     "title": "See Medicore in action",
@@ -261,7 +261,7 @@
     "submit": "Send request",
     "privacy": "We only use your details to contact you about your request.",
     "thanksTitle": "All set! We’ll be in touch",
-    "thanksBody": "We received your request and will contact you within one business day.",
+    "thanksBody": "We received your request and will contact you as soon as possible.",
     "plan": "Plan of interest",
     "planNone": "Not sure yet"
   },
@@ -313,7 +313,7 @@
   },
   "thanks": {
     "title": "All set! We’ll be in touch",
-    "body": "We received your request and will contact you within one business day.",
+    "body": "We received your request and will contact you as soon as possible.",
     "back": "Back to home"
   },
   "demoError": {

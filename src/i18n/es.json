@@ -246,7 +246,7 @@
     ],
     "sub": "Lo que más nos preguntan los médicos y las clínicas antes de empezar.",
     "moreTitle": "¿Tienes otra pregunta?",
-    "moreBody": "Escríbenos y te respondemos en el próximo día hábil."
+    "moreBody": "Escríbenos y con gusto te ayudamos a resolverla."
   },
   "demo": {
     "title": "Mira Medicore en acción",
@@ -261,7 +261,7 @@
     "submit": "Enviar solicitud",
     "privacy": "Solo usamos tus datos para contactarte sobre tu solicitud.",
     "thanksTitle": "¡Listo! Te escribiremos pronto",
-    "thanksBody": "Recibimos tu solicitud. Te contactaremos en el próximo día hábil.",
+    "thanksBody": "Recibimos tu solicitud. Te contactaremos lo antes posible.",
     "plan": "Plan de interés",
     "planNone": "Aún no lo sé"
   },
@@ -313,7 +313,7 @@
   },
   "thanks": {
     "title": "¡Listo! Te escribiremos pronto",
-    "body": "Recibimos tu solicitud. Te contactaremos en el próximo día hábil.",
+    "body": "Recibimos tu solicitud. Te contactaremos lo antes posible.",
     "back": "Volver al inicio"
   },
   "demoError": {
