@@ -9,12 +9,14 @@ import shieldCheck from 'lucide-static/icons/shield-check.svg?raw';
 import users from 'lucide-static/icons/users.svg?raw';
 
 // [svg, left, top(px), size(px), rotation(deg)]
+// Icons with horizontal strokes (calendar, clipboard) stay unrotated: rotated
+// straight lines shimmer while floating in Firefox.
 const items: [string, string, number, number, number][] = [
   [stethoscope, '64%', 30, 60, -8],
-  [calendarCheck, '84%', 70, 54, 6],
+  [calendarCheck, '84%', 70, 54, 0],
   [heartPulse, '74%', 190, 68, 0],
   [syringe, '93%', 250, 50, 12],
-  [clipboardList, '66%', 330, 54, -6],
+  [clipboardList, '66%', 330, 54, 0],
   [pill, '85%', 400, 52, 0],
   [shieldCheck, '73%', 500, 48, 0],
   [users, '94%', 530, 46, -4],
