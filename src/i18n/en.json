@@ -5,7 +5,7 @@
     "faq": "FAQ",
     "login": "Sign in",
     "cta": "Get a demo",
-    "pricing": "Pricing"
+    "pricing": "Plans"
   },
   "hero": {
     "pill": "For practices and clinics in El Salvador",
@@ -229,7 +229,7 @@
       },
       {
         "q": "What are add-ons?",
-        "a": "Modules you can add to any plan: vaccination, medication administration and minor procedures. Get them separately or all three as a bundle; prices are in the plans section."
+        "a": "Modules you can add to any plan: vaccination, medication administration and minor procedures. Get them separately or all three as a bundle. We’ll share availability and pricing at launch."
       },
       {
         "q": "Can I change plans?",
@@ -327,18 +327,16 @@
     "back": "Go to home"
   },
   "pricing": {
-    "eyebrow": "Plans and pricing",
+    "eyebrow": "Plans",
     "title": "A plan for every stage of your practice",
     "sub": "From your private practice to a clinic with several specialists. Go digital with your patients, appointments and medical records with Medicore.",
-    "note": "Monthly prices in US dollars. No software to install.",
-    "perMonth": "/mo",
-    "currency": "USD",
+    "note": "No software to install.",
     "quote": "Custom quote",
     "soon": "Coming soon",
     "featured": "Recommended for small clinics",
-    "cta": "Request plan",
-    "ctaSales": "Contact us",
-    "ctaAria": "Request the {plan} plan",
+    "cta": "I’m interested in this plan",
+    "ctaSales": "Let’s talk about your clinic",
+    "ctaAria": "I’m interested in this plan: {plan}",
     "units": {
       "doctors": [
         "{n} doctor",
@@ -455,7 +453,6 @@
       "caption": "Medicore plan comparison",
       "feature": "Feature",
       "rows": {
-        "price": "Monthly price",
         "doctors": "Doctors",
         "support": "Support staff",
         "sites": "Locations",
@@ -493,7 +490,6 @@
       "title": "Power up Medicore to fit your clinic",
       "sub": "Extend your system with specialized modules. They work with any plan.",
       "badge": "Add-on",
-      "save": "Save ${n}",
       "items": {
         "vacunacion": {
           "name": "Vaccination management",
@@ -511,7 +507,16 @@
           "name": "Three-module bundle",
           "body": "Vaccination, medication and procedures together."
         }
-      }
-    }
+      },
+      "bundle": "Complete bundle",
+      "optional": "Optional add-on",
+      "availability": "Availability and pricing at launch."
+    },
+    "launch": {
+      "label": "Pre-launch",
+      "title": "Your next chapter starts here",
+      "body": "We’re preparing to launch Medicore. Explore the plans and tell us which one interests you to learn about availability and pricing when we launch."
+    },
+    "ctaSalesAria": "Let’s talk about your clinic: {plan}"
   }
 }

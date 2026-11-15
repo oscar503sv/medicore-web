@@ -223,7 +223,7 @@ const messages = {
       (window as unknown as { turnstile?: { reset: () => void } }).turnstile?.reset();
     }
 
-    // "Solicitar plan" buttons preselect the plan in the form.
+    // Plan interest links preselect the plan in the form.
     const planSelect = form.querySelector<HTMLSelectElement>('select[name="plan"]');
     document.querySelectorAll<HTMLAnchorElement>('a[data-plan]').forEach((link) => {
       link.addEventListener('click', () => {

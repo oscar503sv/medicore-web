@@ -7,7 +7,6 @@ import Steps from './Steps.astro';
 import Audience from './Audience.astro';
 import Security from './Security.astro';
 import Pricing from './Pricing.astro';
-import { plans } from '../data/plans';
 import Faq from './Faq.astro';
 import DemoForm from './DemoForm.astro';
 import { routes, useTranslations, type Lang } from '../i18n/utils';
@@ -20,7 +19,6 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const pageUrl = new URL(routes.home[lang], SITE_URL).href;
 const orgId = `${SITE_URL}/#organization`;
-const priced = plans.flatMap((p) => (p.price === null ? [] : [p.price]));
 
 const jsonLd = [
   {
@@ -46,13 +44,6 @@ const jsonLd = [
     inLanguage: ['es', 'en'],
     installUrl: APP_URL,
     publisher: { '@id': orgId },
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'USD',
-      lowPrice: Math.min(...priced),
-      highPrice: Math.max(...priced),
-      offerCount: priced.length,
-    },
   },
   {
     '@context': 'https://schema.org',

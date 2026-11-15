@@ -1,4 +1,5 @@
 ---
+import sparklesSvg from 'lucide-static/icons/sparkles.svg?raw';
 import checkSvg from 'lucide-static/icons/check.svg?raw';
 import stethoscopeSvg from 'lucide-static/icons/stethoscope.svg?raw';
 import usersSvg from 'lucide-static/icons/users.svg?raw';
@@ -16,6 +17,7 @@ const p = t.pricing;
 
 const icon = {
   check: inlineIcon(checkSvg),
+  launch: inlineIcon(sparklesSvg),
   doctors: inlineIcon(stethoscopeSvg),
   support: inlineIcon(usersSvg),
   sites: inlineIcon(pinSvg),
@@ -25,7 +27,6 @@ const icon = {
 const fmt = (tpl: string, vars: Record<string, string | number>) =>
   tpl.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ''));
 const plural = (forms: string[], n: number) => fmt(n === 1 ? forms[0] : forms[1], { n });
-const money = (n: number) => `$${n}`;
 
 const copy = (plan: Plan) => p.plans[plan.id];
 const units = (plan: Plan) =>
@@ -36,15 +37,13 @@ const units = (plan: Plan) =>
     plan.storageGb && { key: 'storage', text: fmt(p.units.storage, { n: plan.storageGb }), soon: true },
   ].filter(Boolean) as { key: keyof typeof icon; text: string; soon?: boolean }[];
 
-const tiers = plans.filter((pl) => pl.price !== null);
-const enterprise = plans.find((pl) => pl.price === null)!;
+const tiers = plans.filter((pl) => pl.id !== 'empresarial');
+const enterprise = plans.find((pl) => pl.id === 'empresarial')!;
 
 const cell = (c: CompareCell, plan: Plan): { text: string; soon?: boolean } => {
   switch (c.kind) {
     case 'token':
       return { text: p.compare.values[c.token], soon: c.token === 'soon' };
-    case 'price':
-      return { text: plan.price === null ? p.compare.values.quote : `${money(plan.price)}${p.perMonth}` };
     case 'number': {
       const v = plan[c.field];
       return { text: v === null ? p.compare.values.custom : String(v) };
@@ -53,15 +52,20 @@ const cell = (c: CompareCell, plan: Plan): { text: string; soon?: boolean } => {
       return { text: plan.storageGb === null ? p.compare.values.custom : `${plan.storageGb} GB`, soon: plan.storageGb !== null };
   }
 };
-
-const bundle = addons.find((a) => a.id === 'paquete')!;
-const bundleSavings = addons.filter((a) => a.id !== 'paquete').reduce((s, a) => s + a.price, 0) - bundle.price;
 ---
 
 <section id="precios" class="section container" aria-labelledby="pricing-title">
   <p class="eyebrow">{p.eyebrow}</p>
   <h2 id="pricing-title" class="h2 wide">{p.title}</h2>
   <p class="lead">{p.sub}</p>
+
+  <div class="launch-note">
+    <span class="launch-icon" aria-hidden="true" set:html={icon.launch} />
+    <div>
+      <p class="launch-title">{p.launch.title}</p>
+      <p class="launch-body">{p.launch.body}</p>
+    </div>
+  </div>
 
   <div class="tiers">
     {
@@ -70,12 +74,7 @@ const bundleSavings = addons.filter((a) => a.id !== 'paquete').reduce((s, a) => 
           {plan.featured && <span class="badge">{p.featured}</span>}
           <h3 id={`plan-${plan.id}`}>{copy(plan).name}</h3>
           <p class="for">{copy(plan).for}</p>
-          <p class="price">
-            <span class="amount">{money(plan.price!)}</span>
-            <span class="per">
-              {p.perMonth} {p.currency}
-            </span>
-          </p>
+          <p class="launch-status">{p.launch.label}</p>
           <ul class="units">
             {units(plan).map((u) => (
               <li>
@@ -121,7 +120,7 @@ const bundleSavings = addons.filter((a) => a.id !== 'paquete').reduce((s, a) => 
         class="btn btn-light plan-cta"
         href="#demo"
         data-plan={enterprise.id}
-        aria-label={fmt(p.ctaAria, { plan: copy(enterprise).name })}
+        aria-label={fmt(p.ctaSalesAria, { plan: copy(enterprise).name })}
       >
         {p.ctaSales}
       </a>
@@ -188,14 +187,11 @@ const bundleSavings = addons.filter((a) => a.id !== 'paquete').reduce((s, a) => 
       addons.map((a) => (
         <li class:list={['addon', { bundle: a.id === 'paquete' }]}>
           <span class="addon-badge">
-            {a.id === 'paquete' ? fmt(p.addons.save, { n: bundleSavings }) : p.addons.badge}
+            {a.id === 'paquete' ? p.addons.bundle : p.addons.optional}
           </span>
           <h3>{p.addons.items[a.id].name}</h3>
           <p>{p.addons.items[a.id].body}</p>
-          <p class="addon-price">
-            <span class="amount">+{money(a.price)}</span>
-            <span class="per">{p.perMonth}</span>
-          </p>
+          <p class="addon-availability">{p.addons.availability}</p>
         </li>
       ))
     }
@@ -262,23 +258,51 @@ const bundleSavings = addons.filter((a) => a.id !== 'paquete').reduce((s, a) => 
     color: var(--ink-80);
     min-height: 3em;
   }
-  .price {
+  .launch-note {
     display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-top: 20px;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 28px;
+    padding: clamp(20px, 3vw, 28px);
+    border-radius: 24px;
+    background: var(--primary-light);
   }
-  .amount {
+  .launch-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    color: var(--primary);
+    background: var(--surface);
+  }
+  .launch-icon :global(svg) {
+    width: 22px;
+    height: 22px;
+  }
+  .launch-title {
     font-family: var(--font-display);
+    font-size: 22px;
     font-weight: 700;
-    font-size: 56px;
-    letter-spacing: -0.045em;
-    line-height: 1;
+    letter-spacing: -0.02em;
   }
-  .per {
-    font-weight: 600;
+  .launch-body {
+    max-width: 76ch;
+    margin-top: 6px;
     font-size: 15px;
-    color: var(--ink-60);
+    line-height: 1.6;
+    color: var(--ink-80);
+  }
+  .launch-status {
+    align-self: flex-start;
+    margin-top: 20px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--primary-light);
+    color: var(--primary-hover);
+    font-size: 13px;
+    font-weight: 700;
   }
   .units {
     list-style: none;
@@ -521,14 +545,10 @@ const bundleSavings = addons.filter((a) => a.id !== 'paquete').reduce((s, a) => 
     line-height: 1.5;
     color: var(--ink-80);
   }
-  .addon-price {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
+  .addon .addon-availability {
     margin-top: auto;
-    padding-top: 10px;
-  }
-  .addon-price .amount {
-    font-size: 30px;
+    padding-top: 14px;
+    font-size: 13px;
+    font-weight: 600;
   }
 </style>

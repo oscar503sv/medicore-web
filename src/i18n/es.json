@@ -5,7 +5,7 @@
     "faq": "Preguntas",
     "login": "Entrar",
     "cta": "Pedir una demo",
-    "pricing": "Precios"
+    "pricing": "Planes"
   },
   "hero": {
     "pill": "Para consultorios y clínicas en El Salvador",
@@ -229,7 +229,7 @@
       },
       {
         "q": "¿Qué son los complementos?",
-        "a": "Son módulos que se suman a cualquier plan: vacunación, administración de medicamentos y procedimientos menores. Puedes contratarlos por separado o los tres en paquete; los precios están en la sección de planes."
+        "a": "Son módulos que se suman a cualquier plan: vacunación, administración de medicamentos y procedimientos menores. Puedes contratarlos por separado o los tres en paquete. Compartiremos su disponibilidad y precios al lanzamiento."
       },
       {
         "q": "¿Puedo cambiar de plan?",
@@ -327,18 +327,16 @@
     "back": "Ir al inicio"
   },
   "pricing": {
-    "eyebrow": "Planes y precios",
+    "eyebrow": "Planes",
     "title": "Un plan para cada etapa de tu práctica médica",
     "sub": "Desde tu consultorio privado hasta una clínica con varios especialistas. Digitaliza la gestión de tus pacientes, citas y expedientes clínicos con Medicore.",
-    "note": "Precios mensuales en dólares estadounidenses. Sin necesidad de instalar software.",
-    "perMonth": "/mes",
-    "currency": "USD",
+    "note": "Sin necesidad de instalar software.",
     "quote": "Cotización personalizada",
     "soon": "Próximamente",
     "featured": "Recomendado para clínicas pequeñas",
-    "cta": "Solicitar plan",
-    "ctaSales": "Contáctanos",
-    "ctaAria": "Solicitar el plan {plan}",
+    "cta": "Me interesa este plan",
+    "ctaSales": "Hablemos de tu clínica",
+    "ctaAria": "Me interesa este plan: {plan}",
     "units": {
       "doctors": [
         "{n} médico",
@@ -455,7 +453,6 @@
       "caption": "Comparativa de planes de Medicore",
       "feature": "Característica",
       "rows": {
-        "price": "Precio mensual",
         "doctors": "Médicos",
         "support": "Personal de apoyo",
         "sites": "Sedes",
@@ -493,7 +490,6 @@
       "title": "Potencia Medicore según las necesidades de tu clínica",
       "sub": "Amplía tu sistema con módulos especializados. Se suman a cualquier plan.",
       "badge": "Complemento",
-      "save": "Ahorras ${n}",
       "items": {
         "vacunacion": {
           "name": "Gestión de vacunación",
@@ -511,7 +507,16 @@
           "name": "Paquete de los tres módulos",
           "body": "Vacunación, medicamentos y procedimientos juntos."
         }
-      }
-    }
+      },
+      "bundle": "Paquete completo",
+      "optional": "Complemento opcional",
+      "availability": "Disponibilidad y precios al lanzamiento."
+    },
+    "launch": {
+      "label": "En prelanzamiento",
+      "title": "Tu próxima etapa empieza aquí",
+      "body": "Estamos preparando el lanzamiento de Medicore. Explora los planes y cuéntanos cuál te interesa para conocer su disponibilidad y precios cuando abramos."
+    },
+    "ctaSalesAria": "Hablemos de tu clínica: {plan}"
   }
 }
