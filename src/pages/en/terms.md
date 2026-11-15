@@ -4,7 +4,7 @@ lang: en
 route: terms
 title: Terms of use
 description: Terms for using the medicoresv.health site and the Medicore demo request form.
-updated: 2026-11-10
+updated: 2026-11-15
 ---
 
 ## 1. Acceptance
@@ -13,11 +13,11 @@ These terms govern the use of the **medicoresv.health** site (the "site"), opera
 
 ## 2. What this site is
 
-The site presents information about Medicore, an online clinic management system, and lets you request a demo. Use of the Medicore application (app.medicoresv.health) is **not** governed by these terms, but by the service agreement and conditions each clinic signs when subscribing.
+The site presents information about Medicore, an online clinic management system, and lets you request a demo or express interest in a plan before launch. Use of the Medicore application (app.medicoresv.health) is **not** governed by these terms, but by the service agreement and conditions each clinic signs when subscribing.
 
 ## 3. Demo requests
 
-- Submitting the form does not create any purchase obligation or contract between you and Medicore.
+- Submitting the form to request a demo or express interest in a plan does not create any purchase obligation or contract between you and Medicore, reserve a price or guarantee availability.
 - You agree to provide truthful information and not to send patient data or health information.
 - We may decline or not respond to requests that appear automated, fake or abusive.
 
@@ -36,7 +36,7 @@ The Medicore brand, logo, text, design, images and site software belong to Medic
 
 ## 6. Site information
 
-Information on the site is general and may change without notice. Final features, plans and pricing are confirmed in the demo and the service agreement. **Nothing published on the site is medical advice.** Examples of patients, appointments or diagnoses shown on the site are fictional.
+Medicore is in pre-launch. The site outlines the subscription plans and add-ons; availability and pricing will be shared at launch. Site information may be updated, and the final service conditions will be set out in the relevant agreement. **Nothing published on the site is medical advice.** Examples of patients, appointments or diagnoses shown on the site are fictional.
 
 ## 7. Third-party links
 

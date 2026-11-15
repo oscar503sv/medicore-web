@@ -4,7 +4,7 @@ lang: en
 route: privacy
 title: Privacy policy
 description: How Medicore collects, uses and protects the personal data of people who visit medicoresv.health and request a demo.
-updated: 2026-11-11
+updated: 2026-11-15
 ---
 
 ## 1. Who we are
@@ -68,11 +68,11 @@ Some providers process data in other countries, mainly the United States. In tho
 
 ## 8. How long we keep it
 
-We keep demo request data for **up to 12 months** after our last contact, unless you become a customer (in which case the service agreement applies) or you ask us to delete it sooner. Technical logs are kept for the periods set by the hosting provider, usually a few days or weeks.
+We keep demo request data for **up to 6 months** after our last contact, unless you become a customer (in which case the service agreement applies) or you ask us to delete it sooner. Technical logs are kept for the periods set by the hosting provider, usually a few days or weeks.
 
 ## 9. How we protect it
 
-We use encrypted connections (HTTPS), limit access to the team members who need it, and apply technical measures against unauthorized access. No system is 100% secure, but we continuously review and improve our measures.
+We protect your data through encrypted connections (HTTPS), access restricted to the team members who need it to handle your request, and technical measures to help prevent unauthorized access. We continuously review and improve these measures to safeguard the confidentiality and integrity of your information.
 
 ## 10. Your rights
 

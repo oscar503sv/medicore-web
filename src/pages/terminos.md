@@ -4,7 +4,7 @@ lang: es
 route: terms
 title: Términos de uso
 description: Condiciones de uso del sitio medicoresv.health y del formulario de solicitud de demo de Medicore.
-updated: 2026-11-10
+updated: 2026-11-15
 ---
 
 ## 1. Aceptación
@@ -13,11 +13,11 @@ Estos términos regulan el uso del sitio **medicoresv.health** (el «sitio»), o
 
 ## 2. Qué es este sitio
 
-El sitio presenta información sobre Medicore, un sistema en línea de gestión clínica, y permite solicitar una demostración. El uso de la aplicación Medicore (app.medicoresv.health) **no** se rige por estos términos, sino por el contrato de servicio y las condiciones que firma cada clínica al contratarla.
+El sitio presenta información sobre Medicore, un sistema en línea de gestión clínica, y permite solicitar una demostración o expresar interés en un plan antes del lanzamiento. El uso de la aplicación Medicore (app.medicoresv.health) **no** se rige por estos términos, sino por el contrato de servicio y las condiciones que firma cada clínica al contratarla.
 
 ## 3. Solicitudes de demo
 
-- Enviar el formulario no crea ninguna obligación de compra ni un contrato entre tú y Medicore.
+- Enviar el formulario para solicitar una demo o expresar interés en un plan no crea ninguna obligación de compra ni un contrato entre tú y Medicore, ni reserva una tarifa o garantiza disponibilidad.
 - Te comprometes a dar información veraz y a no enviar datos de pacientes ni información de salud.
 - Podemos rechazar o no responder solicitudes que parezcan automatizadas, falsas o abusivas.
 
@@ -36,7 +36,7 @@ La marca Medicore, el logotipo, los textos, el diseño, las imágenes y el softw
 
 ## 6. Información del sitio
 
-La información del sitio es general y puede cambiar sin aviso. Las funciones, planes y precios definitivos se confirman en la demo y en el contrato de servicio. **Nada de lo publicado en el sitio constituye consejo médico.** Los ejemplos de pacientes, citas o diagnósticos que aparecen en el sitio son ficticios.
+Medicore está en prelanzamiento. El sitio presenta los planes y complementos previstos; su disponibilidad y precios se comunicarán al lanzamiento. La información del sitio puede actualizarse y las condiciones definitivas del servicio se establecerán en el contrato correspondiente. **Nada de lo publicado en el sitio constituye consejo médico.** Los ejemplos de pacientes, citas o diagnósticos que aparecen en el sitio son ficticios.
 
 ## 7. Enlaces a terceros
 

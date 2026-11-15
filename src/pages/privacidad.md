@@ -4,7 +4,7 @@ lang: es
 route: privacy
 title: Política de privacidad
 description: Cómo Medicore recoge, usa y protege los datos personales de quienes visitan medicoresv.health y solicitan una demo.
-updated: 2026-11-11
+updated: 2026-11-15
 ---
 
 ## 1. Quiénes somos
@@ -68,11 +68,11 @@ Algunos proveedores procesan los datos en otros países, principalmente en Estad
 
 ## 8. Cuánto tiempo los guardamos
 
-Guardamos los datos de las solicitudes de demo **hasta 12 meses** desde el último contacto, salvo que te conviertas en cliente (en cuyo caso aplica el contrato de servicio) o que nos pidas borrarlos antes. Los registros técnicos se conservan por los plazos que define el proveedor de alojamiento, normalmente pocos días o semanas.
+Guardamos los datos de las solicitudes de demo **hasta 6 meses** desde el último contacto, salvo que te conviertas en cliente (en cuyo caso aplica el contrato de servicio) o que nos pidas borrarlos antes. Los registros técnicos se conservan por los plazos que define el proveedor de alojamiento, normalmente pocos días o semanas.
 
 ## 9. Cómo los protegemos
 
-Usamos conexiones cifradas (HTTPS), limitamos el acceso a las personas de nuestro equipo que lo necesitan y aplicamos medidas técnicas contra accesos no autorizados. Ningún sistema es 100 % seguro, pero revisamos y mejoramos nuestras medidas de forma continua.
+Protegemos tus datos mediante conexiones cifradas (HTTPS), acceso restringido al personal que lo necesita para atender tu solicitud y medidas técnicas para prevenir accesos no autorizados. Revisamos y mejoramos estas medidas de forma continua para cuidar la confidencialidad y la integridad de tu información.
 
 ## 10. Tus derechos
 
