@@ -1,32 +1,19 @@
 import type { APIRoute } from 'astro';
 import { RESEND_API_KEY, DEMO_FROM, DEMO_TO, TURNSTILE_SECRET_KEY } from 'astro:env/server';
 import { demoSchema, type DemoField, type DemoRequest } from '../../lib/demo-schema';
+import { rateLimited, type RateLimitState } from '../../lib/demo-rate-limit';
 import { routes, isLang, useTranslations, type Lang } from '../../i18n/utils';
 
 export const prerender = false;
 
 const MAX_BODY_BYTES = 16 * 1024;
-const RATE_LIMIT = 5;
-const RATE_WINDOW_MS = 60 * 60 * 1000;
 
 /**
  * Best-effort, per-instance rate limit. Serverless instances don't share
  * memory, so for a hard guarantee add a Vercel WAF rate-limit rule (or a
  * shared store such as Upstash Redis) in front of /api/demo.
  */
-const hits = new Map<string, number[]>();
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
-  recent.push(now);
-  hits.set(ip, recent);
-  if (hits.size > 5000) {
-    for (const [key, times] of hits) {
-      if (times.every((t) => now - t >= RATE_WINDOW_MS)) hits.delete(key);
-    }
-  }
-  return recent.length > RATE_LIMIT;
-}
+const hits: RateLimitState = new Map();
 
 function clientIp(request: Request, fallback: string | undefined): string {
   const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
@@ -152,7 +139,7 @@ export const POST: APIRoute = async ({ request, clientAddress, url }) => {
   if (raw.website) return respond(200, { ok: true });
 
   const ip = clientIp(request, clientAddress);
-  if (rateLimited(ip)) return respond(429, { ok: false, error: 'rate_limited' });
+  if (rateLimited(hits, ip)) return respond(429, { ok: false, error: 'rate_limited' });
 
   const parsed = demoSchema.safeParse(raw);
   if (!parsed.success) {

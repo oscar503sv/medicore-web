@@ -22,6 +22,7 @@ Abre http://localhost:4321.
 | `npm run dev` | Servidor de desarrollo |
 | `npm run build` | Compila el sitio para producción |
 | `npm run check` | Revisa tipos y errores |
+| `npm test` | Verifica el rate limiter con datos sintéticos y reloj controlado |
 | `npm run og` | Regenera favicon, iconos e imágenes para redes sociales |
 
 ## Dónde cambiar cosas
